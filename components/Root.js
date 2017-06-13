@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Navigator} from 'react';
 import {Container, Content} from 'native-base';
-import {NewUserForm} from './views';
+import {NewPlayerForm} from './views';
 
 class Root extends Component {
     render() {
         return (
             <Container>
                 <Content>
-                    <NewUserForm/>
+                    <NewPlayerForm/>
                 </Content>
             </Container>
         );

@@ -16,7 +16,7 @@ const MIN_DATE = '01-01-1900';
 const DEFAULT_DATE = '01-01-1990';
 
 
-class NewUserFormView extends Component {
+class NewPlayerFormView extends Component {
     state = {
         name: '',
         surname: '',
@@ -123,8 +123,8 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-const NewUserForm = connect(
+const NewPlayerForm = connect(
     mapStateToProps, mapDispatchToProps
-)(NewUserFormView);
+)(NewPlayerFormView);
 
-export {NewUserFormView, NewUserForm};
+export {NewPlayerFormView, NewPlayerForm};
