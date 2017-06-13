@@ -1,10 +1,10 @@
-import {getObjects, saveObject} from '../realm';
+import {realm, saveObject} from '../realm';
 
 const User = {
     schema: 'User',
     get() {
-        const user = getObjects(this.schema);
-        return user === undefined ? false : user[0];
+        const user = realm.objectForPrimaryKey(this.schema, this.schema);
+        return user === undefined ? false : user;
     },
     save(user) {
         user = {

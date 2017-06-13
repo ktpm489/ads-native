@@ -10,7 +10,7 @@ export default function user(state = initialState, action) {
                 ...action.data,
             };
         case FETCH_USER_FAILURE:
-            return initialState;
+            return false;
         case SAVE_USER_FAILURE:
         default:
             return state;

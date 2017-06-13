@@ -27,7 +27,7 @@ class App extends Component {
                     >
                         <Scene key="loading" component={Loading} initial hideNavBar/>
                         <Scene key="newPlayer" component={NewPlayerForm} title="New Player"/>
-                        <Scene key="gameMain" component={GameMain} title="Dashboard"/>
+                        <Scene key="gameMain" component={GameMain} title="Dashboard" hideNavBar/>
                     </Scene>
                 </Router>
             </Provider>

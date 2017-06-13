@@ -8,7 +8,6 @@ import {User} from '../../db';
 export const fetchUser = () => {
     return dispatch => {
         const user = User.get();
-        console.log(user);
         if (user) {
             dispatch(fetchSuccess(user));
         } else {

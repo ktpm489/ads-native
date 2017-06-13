@@ -29,9 +29,11 @@ class NewPlayerFormView extends Component {
 
     componentDidMount() {
         const {user} = this.props;
-        this.setState({
-            ...user
-        });
+        if (user) {
+            this.setState({
+                ...user
+            });
+        }
     }
 
     saveUser() {
