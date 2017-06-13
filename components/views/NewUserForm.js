@@ -22,9 +22,12 @@ class NewUserFormView extends Component {
         dob: DEFAULT_DATE
     };
 
+    componentWillMount() {
+        this.props.get();
+    }
+
     componentDidMount() {
-        const user = this.props.get();
-        console.log('in did', user);
+        const {user} = this.props;
         this.setState({
             ...user
         });

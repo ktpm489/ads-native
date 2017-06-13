@@ -2,9 +2,9 @@ class User {
 }
 User.schema = {
     name: 'User',
-    primaryKey: 'timestamp',
+    primaryKey: 'key',
     properties: {
-        timestamp: 'int',
+        key: 'string',
         name: 'string',
         surname: 'string',
         dob: 'string'

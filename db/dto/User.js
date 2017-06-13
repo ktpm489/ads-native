@@ -1,5 +1,5 @@
-import moment from 'moment';
 import {getObjects, saveObject} from '../realm';
+
 const User = {
     schema: 'User',
     get() {
@@ -9,9 +9,8 @@ const User = {
     save(user) {
         user = {
             ...user,
-            timestamp: moment().unix()
+            key: this.schema
         };
-        console.log('saving', user);
         return saveObject(this.schema, user);
     }
 };
