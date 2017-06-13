@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Container, Content} from 'native-base';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Scene, Router} from 'react-native-router-flux';
 import {NewUserForm} from './components/views';
 import {store} from './store';
 import {fetchUser} from './store/actions';
@@ -13,11 +13,9 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Container>
-                    <Content>
-                        <NewUserForm />
-                    </Content>
-                </Container>
+                <Router>
+                    <Scene key="newUser" component={NewUserForm} title="New Player"/>
+                </Router>
             </Provider>
         );
     }
