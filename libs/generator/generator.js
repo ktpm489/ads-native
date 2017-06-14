@@ -1,6 +1,7 @@
 import faker from 'faker';
 import {randomizer} from './randomizer';
 import {positions} from '../../config/positions';
+import {nationalities} from '../../config/nationalities';
 
 const GENDER_MALE = 0;
 
@@ -18,7 +19,11 @@ const generator = {
     position(){
         return positions[randomizer.int(0, positions.length)];
     },
-    player(locale = 'it', forcedValues = {}){
+    nationality(){
+        return nationalities[randomizer.int(0, nationalities.length)];
+    },
+    player(forcedValues = {}){
+        const locale = forcedValues.nationality || 'it';
         faker.locale = locale;
         let name = 'a';
         while (name.slice(-1) === 'a') {
@@ -29,6 +34,7 @@ const generator = {
             name,
             surname: faker.name.lastName(GENDER_MALE),
             age: this.playerAge(),
+            nationality: locale,
             skill: this.skill(),
             position: this.position(),
             ...forcedValues
