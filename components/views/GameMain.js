@@ -6,7 +6,6 @@ class GameMainView extends Component {
 
     render() {
         const {user} = this.props;
-        console.log('state in main', this.props);
         return (
             <Container>
                 <Header>
