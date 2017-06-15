@@ -1,7 +1,7 @@
 import {generator} from '../../libs';
-import {range} from '../../utils';
+//import {range} from '../../utils';
 
-describe('generator', () => {
+describe('player generator', () => {
     test('it generates a random player', () => {
         const player = generator.player();
         expect(player).toEqual({
@@ -41,11 +41,22 @@ describe('generator', () => {
     });
 
     /*
-    range(10).forEach(_ => {
-        const nationality = generator.nationality();
-        const player = generator.player({nationality});
-        console.log(player);
-    });
-    */
+     range(10).forEach(_ => {
+     const nationality = generator.nationality();
+     const player = generator.player({nationality});
+     console.log(player);
+     });
+     */
+});
 
+describe('team generator', () => {
+    test('it generates a random team', () => {
+        const team = generator.team();
+        console.log(team);
+        expect(team).toEqual({
+            name: expect.any(String),
+            finance: expect.any(Number),
+            roster: expect.anything()
+        });
+    });
 });
