@@ -1,8 +1,9 @@
 import faker from 'faker';
-import {range} from '../../utils';
+import {range, format} from '../../utils';
 import {randomizer} from './randomizer';
 import {positions} from '../../config/positions';
 import {nationalities} from '../../config/nationalities';
+import {teamNames} from '../../config/teamDefinitions';
 
 const GENDER_MALE = 0;
 
@@ -13,7 +14,7 @@ const SKILL_RANGE = [40, 100];
 const generator = {
     teamName(nationality = 'it'){
         faker.locale = nationality;
-        return faker.address.city();
+        return format(randomizer.pickOne(teamNames), faker.address.city());
     },
     playerAge(){
         return randomizer.int(PLAYER_AGE_RANGE[0], PLAYER_AGE_RANGE[1]);
@@ -49,7 +50,7 @@ const generator = {
         return range(number).map(_ => this.player(forcedValues));
     },
     team(forcedValues = {}){
-        const rosterSize = randomizer.int(18, 25);
+        const rosterSize = randomizer.int(18, 29);
         const mostPlayers = Math.round(rosterSize * (1 - 0.8));
 
         const nationality = forcedValues.nationality || 'it';
@@ -60,6 +61,7 @@ const generator = {
         });
         return {
             name: this.teamName(nationality),
+            nationality,
             finance: randomizer.int(1, 100),
             roster
         }

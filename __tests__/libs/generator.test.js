@@ -39,22 +39,14 @@ describe('player generator', () => {
             nationality
         });
     });
-
-    /*
-     range(10).forEach(_ => {
-     const nationality = generator.nationality();
-     const player = generator.player({nationality});
-     console.log(player);
-     });
-     */
 });
 
 describe('team generator', () => {
     test('it generates a random team', () => {
         const team = generator.team();
-        console.log(team);
         expect(team).toEqual({
             name: expect.any(String),
+            nationality: expect.any(String),
             finance: expect.any(Number),
             roster: expect.anything()
         });
