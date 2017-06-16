@@ -23,8 +23,9 @@ const playerHelper = {
         morale = morale > MAX_MORALE ? MAX_MORALE : morale;
 
         return {
-            player,
+            ...player,
             status: {
+                ...player.status,
                 morale
             }
         }
