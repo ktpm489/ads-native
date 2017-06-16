@@ -28,6 +28,11 @@ const generator = {
     nationality(){
         return randomizer.pickOne(nationalities);
     },
+    status(){
+        return {
+            morale: randomizer.int(10, 100)
+        }
+    },
     player(forcedValues = {}){
         const locale = forcedValues.nationality || 'it';
         faker.locale = locale;
@@ -39,6 +44,7 @@ const generator = {
         return {
             name,
             surname: faker.name.lastName(GENDER_MALE),
+            status: this.status(),
             age: this.playerAge(),
             nationality: locale,
             skill: this.skill(),
@@ -61,6 +67,7 @@ const generator = {
         });
         return {
             name: this.teamName(nationality),
+            status: this.status(),
             nationality,
             finance: randomizer.int(1, 100),
             roster

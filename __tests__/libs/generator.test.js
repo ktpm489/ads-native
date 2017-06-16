@@ -7,6 +7,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
@@ -20,6 +21,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
@@ -33,6 +35,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            status: expect.anything(),
             position: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
@@ -46,6 +49,7 @@ describe('team generator', () => {
         const team = generator.team();
         expect(team).toEqual({
             name: expect.any(String),
+            status: expect.anything(),
             nationality: expect.any(String),
             finance: expect.any(Number),
             roster: expect.anything()
