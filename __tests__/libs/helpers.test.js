@@ -92,4 +92,31 @@ describe('teamHelper tests', () => {
         });
         expect(teamHelper.updateStatus({roster}).status.morale).toBe(10);
     });
+
+    test('it gets a list of scorers', () => {
+        const team = {
+            roster: [
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'GK'
+                },
+            ]
+        };
+        const goals = 3;
+
+        const scorers = teamHelper.scorers(team, goals);
+        expect(scorers.length).toBe(goals);
+        expect(scorers.filter(p => p === 'GK').length).toBe(0);
+    });
 });
