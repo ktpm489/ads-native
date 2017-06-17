@@ -1,4 +1,5 @@
 import {generator} from '../../libs';
+import {fixtureGenerator} from '../../libs/generator/fixtureGenerator';
 
 describe('coach generator', () => {
     test('it generates a random player', () => {
@@ -95,6 +96,28 @@ describe('team generator', () => {
             finance: expect.any(Number),
             coach: expect.anything(),
             roster: expect.anything()
+        });
+    });
+});
+
+describe('fixture generator', () => {
+    test('it generates a collection of matches, given an array of teams', () => {
+        const teams = [
+            {name: 'Juventus'},
+            {name: 'Inter'},
+            {name: 'Milan'},
+            {name: 'Napoli'},
+            {name: 'Roma'},
+            {name: 'Fiorentina'}
+        ];
+        const fixture = fixtureGenerator.generate(teams);
+        //expect(fixture.length).toBe((teams.length - 1) * 2);
+
+        fixture.forEach((r, index) => {
+            console.log(`***Round ${index + 1}***`);
+            r.forEach(m => {
+                console.log(`${m.home} - ${m.away}`);
+            });
         });
     });
 });

@@ -5,7 +5,6 @@ import {match} from '../../libs/simulator';
  import {teamHelper} from "../../libs/helpers/teamHelper";
  */
 describe('match simulator tests', () => {
-
     test('simulates a game between returning result', () => {
         const home = generator.team();
         const away = generator.team();

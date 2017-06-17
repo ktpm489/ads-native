@@ -44,7 +44,11 @@ const generator = {
     person(locale){
         faker.locale = locale;
         let name = 'a';
-        while (name.slice(-1) === 'a') {
+        while (
+        ['a',].includes(name.slice(-1))
+        ||
+        ['ie', 'ah', 'hy', 'ay', 'ee'].includes(name.slice(-2))
+            ) {
             name = faker.name.firstName(GENDER_MALE);
         }
         return {
