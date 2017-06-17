@@ -111,13 +111,6 @@ describe('fixture generator', () => {
             {name: 'Fiorentina'}
         ];
         const fixture = fixtureGenerator.generate(teams);
-        //expect(fixture.length).toBe((teams.length - 1) * 2);
-
-        fixture.forEach((r, index) => {
-            console.log(`***Round ${index + 1}***`);
-            r.forEach(m => {
-                console.log(`${m.home} - ${m.away}`);
-            });
-        });
+        expect(fixture.length).toBe((teams.length - 1) * 2);
     });
 });
