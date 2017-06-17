@@ -1,5 +1,6 @@
 import {randomizer} from '../generator/randomizer';
 import {range} from '../../utils';
+import {modules, extendedModules} from '../../config/modules';
 import {extendedPositions, positions} from '../../config/positions';
 
 const teamHelper = {
@@ -50,7 +51,15 @@ const teamHelper = {
         }
     },
     canPlayModule(team){
-        return true;
+        const module = team.coach ? team.coach.module : '4-4-2';
+        const roles = extendedModules[module].roles;
+        const playersPerRole = this.playersPerRole(team);
+        return roles.every((needed, index) => {
+            if (needed > 0 && !(playersPerRole[positions[index]] >= needed)) {
+                return false;
+            }
+            return true;
+        });
     },
     playersPerRole(team){
         const positionMapping = {};

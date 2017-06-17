@@ -120,6 +120,56 @@ describe('teamHelper tests', () => {
         expect(scorers.filter(p => p === 'GK').length).toBe(0);
     });
 
+    test('Method canPlayModule returns true if team can play its module', () => {
+        const team = {
+            coach: {
+                module: '4-4-2'
+            },
+            roster: [
+                {position: 'S'},
+                {position: 'S'},
+                {position: 'LM'},
+                {position: 'RM'},
+                {position: 'CM'},
+                {position: 'CM'},
+                {position: 'D'},
+                {position: 'D'},
+                {position: 'LD'},
+                {position: 'RD'},
+                {position: 'GK'}
+            ]
+        };
+
+        expect(teamHelper.canPlayModule(team)).toBe(true);
+    });
+
+    test('Method canPlayModule returns false if team cant play its module', () => {
+        const team = {
+            coach: {
+                module: '4-4-2'
+            },
+            roster: [
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'GK'
+                },
+            ]
+        };
+
+        expect(teamHelper.canPlayModule(team)).toBe(false);
+    });
+
     test('it gets a list of number players per role', () => {
         const team = {
             roster: [

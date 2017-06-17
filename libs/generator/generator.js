@@ -62,7 +62,7 @@ const generator = {
             age: this.coachAge(),
             nationality: locale,
             skill: this.skill(),
-            module: this.position(),
+            module: this.module(),
             ...forcedValues
         }
     },
