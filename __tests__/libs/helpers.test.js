@@ -119,4 +119,38 @@ describe('teamHelper tests', () => {
         expect(scorers.length).toBe(goals);
         expect(scorers.filter(p => p === 'GK').length).toBe(0);
     });
+
+    test('it gets a list of number players per role', () => {
+        const team = {
+            roster: [
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'S'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'D'
+                },
+                {
+                    position: 'GK'
+                },
+            ]
+        };
+        expect(teamHelper.playersPerRole(team)).toEqual({
+            GK: 1,
+            S: 2,
+            D: 2,
+            CM: 0,
+            LD: 0,
+            LM: 0,
+            LS: 0,
+            RD: 0,
+            RM: 0,
+            RS: 0
+        });
+    });
 });

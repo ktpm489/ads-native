@@ -1,6 +1,6 @@
 import {randomizer} from '../generator/randomizer';
 import {range} from '../../utils';
-import {extendedPositions} from '../../config/positions';
+import {extendedPositions, positions} from '../../config/positions';
 
 const teamHelper = {
     scorers(team, goals){
@@ -48,6 +48,17 @@ const teamHelper = {
                 morale
             }
         }
+    },
+    canPlayModule(team){
+        return true;
+    },
+    playersPerRole(team){
+        const positionMapping = {};
+        positions.forEach(p => positionMapping[p] = 0);
+        team.roster.forEach(p => {
+            positionMapping[p.position] += 1;
+        });
+        return positionMapping;
     }
 };
 
