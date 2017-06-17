@@ -1,13 +1,15 @@
 import faker from 'faker';
 import {range, format} from '../../utils';
 import {randomizer} from './randomizer';
-import {positions} from '../../config/positions';
 import {nationalities} from '../../config/nationalities';
+import {positions} from '../../config/positions';
+import {modules} from '../../config/modules';
 import {teamNames} from '../../config/teamDefinitions';
 
 const GENDER_MALE = 0;
 
 const PLAYER_AGE_RANGE = [15, 41];
+const COACH_AGE_RANGE = [29, 80];
 const SKILL_RANGE = [40, 100];
 
 
@@ -19,11 +21,17 @@ const generator = {
     playerAge(){
         return randomizer.int(PLAYER_AGE_RANGE[0], PLAYER_AGE_RANGE[1]);
     },
+    coachAge(){
+        return randomizer.int(COACH_AGE_RANGE[0], COACH_AGE_RANGE[1]);
+    },
     skill(){
         return randomizer.int(SKILL_RANGE[0], SKILL_RANGE[1]);
     },
     position(){
         return randomizer.pickOne(positions);
+    },
+    module(){
+        return randomizer.pickOne(modules);
     },
     nationality(){
         return randomizer.pickOne(nationalities);
@@ -33,17 +41,37 @@ const generator = {
             morale: randomizer.int(10, 100)
         }
     },
-    player(forcedValues = {}){
-        const locale = forcedValues.nationality || 'it';
+    person(locale){
         faker.locale = locale;
         let name = 'a';
         while (name.slice(-1) === 'a') {
             name = faker.name.firstName(GENDER_MALE);
         }
-
         return {
             name,
-            surname: faker.name.lastName(GENDER_MALE),
+            surname: faker.name.lastName(GENDER_MALE)
+        }
+    },
+    coach(forcedValues = {}){
+        const locale = forcedValues.nationality || 'it';
+        const person = this.person(locale);
+
+        return {
+            ...person,
+            status: this.status(),
+            age: this.coachAge(),
+            nationality: locale,
+            skill: this.skill(),
+            module: this.position(),
+            ...forcedValues
+        }
+    },
+    player(forcedValues = {}){
+        const locale = forcedValues.nationality || 'it';
+        const person = this.person(locale);
+
+        return {
+            ...person,
             status: this.status(),
             age: this.playerAge(),
             nationality: locale,
@@ -65,11 +93,14 @@ const generator = {
         range(rosterSize - mostPlayers).forEach(_ => {
             roster.push(this.player({nationality: this.nationality()}));
         });
+
+        const coachNationality = randomizer.chance(90) ? nationality : this.nationality();
         return {
             name: this.teamName(nationality),
             status: this.status(),
             nationality,
             finance: randomizer.int(1, 100),
+            coach: this.coach({nationality: coachNationality}),
             roster
         }
     }

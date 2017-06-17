@@ -1,5 +1,46 @@
 import {generator} from '../../libs';
-//import {range} from '../../utils';
+
+describe('coach generator', () => {
+    test('it generates a random player', () => {
+        const coach = generator.coach();
+        expect(coach).toEqual({
+            name: expect.any(String),
+            surname: expect.any(String),
+            status: expect.anything(),
+            nationality: expect.any(String),
+            age: expect.any(Number),
+            skill: expect.any(Number),
+            module: expect.any(String)
+        });
+    });
+    test('it generates a random coach, forcing module value', () => {
+        const module = generator.module();
+        const coach = generator.coach({module});
+        expect(coach).toEqual({
+            name: expect.any(String),
+            surname: expect.any(String),
+            status: expect.anything(),
+            nationality: expect.any(String),
+            age: expect.any(Number),
+            skill: expect.any(Number),
+            module
+        });
+    });
+
+    test('it generates a random coach, forcing nationality value', () => {
+        const nationality = generator.nationality();
+        const coach = generator.coach({nationality});
+        expect(coach).toEqual({
+            name: expect.any(String),
+            surname: expect.any(String),
+            status: expect.anything(),
+            module: expect.any(String),
+            age: expect.any(Number),
+            skill: expect.any(Number),
+            nationality
+        });
+    });
+});
 
 describe('player generator', () => {
     test('it generates a random player', () => {
@@ -52,6 +93,7 @@ describe('team generator', () => {
             status: expect.anything(),
             nationality: expect.any(String),
             finance: expect.any(Number),
+            coach: expect.anything(),
             roster: expect.anything()
         });
     });
