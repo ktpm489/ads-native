@@ -62,6 +62,8 @@ const match = {
         }
         const scorers = this.scorers(homeTeam, awayTeam, homeGoal, awayGoal);
         return {
+            home: homeTeam.name,
+            away: awayTeam.name,
             winner,
             loser,
             isDraw,

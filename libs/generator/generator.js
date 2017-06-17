@@ -107,6 +107,9 @@ const generator = {
             coach: this.coach({nationality: coachNationality}),
             roster
         }
+    },
+    teams(number = 8, forcedValues = {}){
+        return range(number).map(() => this.team(forcedValues));
     }
 };
 
