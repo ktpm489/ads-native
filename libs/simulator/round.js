@@ -1,11 +1,9 @@
 import {match} from './match';
+import {teamHelper} from '../helpers';
 
 const round = {
     simulate(matches, teams){
-        const teamsObject = {};
-        teams.forEach(t => {
-            teamsObject[t.name] = t;
-        });
+        const teamsObject = teamHelper.teamsToObject(teams);
         const results = [];
         matches.forEach(m => {
             results.push(match.simulate(teamsObject[m.home], teamsObject[m.away]));

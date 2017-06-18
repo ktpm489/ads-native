@@ -1,4 +1,4 @@
-import {teamHelper, playerHelper} from '../../libs';
+import {teamHelper, playerHelper, generator, fixtureGenerator, round, leagueHelper} from '../../libs';
 import {range} from '../../utils';
 
 describe('playerHelper tests', () => {
@@ -201,6 +201,59 @@ describe('teamHelper tests', () => {
             RD: 0,
             RM: 0,
             RS: 0
+        });
+    });
+});
+
+describe('leagueHelper tests', () => {
+    test('it calculates correctly the new table and scorers given round results', () => {
+        const teams = generator.teams(2);
+        const fixture = fixtureGenerator.generate(teams);
+        const matches = fixture.pop();
+        const results = round.simulate(matches, teams);
+        const newTable = leagueHelper.parseRoundResults(results, teamHelper.createCleanTable(teams));
+        const scorer1 = leagueHelper.parseScorers(results, {});
+        Object.keys(newTable).forEach(k => {
+            expect(newTable[k]).toEqual({
+                name: expect.any(String),
+                played: expect.any(Number),
+                won: expect.any(Number),
+                lost: expect.any(Number),
+                draw: expect.any(Number),
+                points: expect.any(Number),
+                goalsConceded: expect.any(Number),
+                goalsScored: expect.any(Number),
+            });
+        });
+        Object.keys(scorer1).forEach(k => {
+            expect(scorer1[k]).toEqual({
+                goals: expect.any(Number),
+                team: expect.any(String),
+                player: expect.anything()
+            });
+        });
+        const matches2 = fixture.pop();
+        const results2 = round.simulate(matches2, teams);
+        const secondRoundTable = leagueHelper.parseRoundResults(results2, newTable);
+        Object.keys(secondRoundTable).forEach(k => {
+            expect(secondRoundTable[k]).toEqual({
+                name: expect.any(String),
+                played: expect.any(Number),
+                won: expect.any(Number),
+                lost: expect.any(Number),
+                draw: expect.any(Number),
+                points: expect.any(Number),
+                goalsConceded: expect.any(Number),
+                goalsScored: expect.any(Number),
+            });
+        });
+        const scorer2 = leagueHelper.parseScorers(results2, scorer1);
+        Object.keys(scorer2).forEach(k => {
+            expect(scorer2[k]).toEqual({
+                goals: expect.any(Number),
+                team: expect.any(String),
+                player: expect.anything()
+            });
         });
     });
 });

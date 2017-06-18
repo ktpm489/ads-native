@@ -4,6 +4,31 @@ import {extendedModules} from '../../config/modules';
 import {extendedPositions, positions} from '../../config/positions';
 
 const teamHelper = {
+    createCleanTable(teams){
+        const table = {};
+        teams.forEach(t => {
+            table[t.name] = {
+                name: t.name,
+                played: 0,
+                won: 0,
+                lost: 0,
+                draw: 0,
+                points: 0,
+                goalsScored: 0,
+                goalsConceded: 0
+            };
+        });
+
+        return table;
+    },
+    teamsToObject(teams){
+        const teamsObject = {};
+        teams.forEach(t => {
+            teamsObject[t.name] = t;
+        });
+
+        return teamsObject;
+    },
     scorers(team, goals){
         const orderedRoster = team.roster.sort((p1, p2) => extendedPositions[p1.position].weight < extendedPositions[p2.position].weight);
         const possibleScorers = orderedRoster.filter(p => p.position !== 'GK');
