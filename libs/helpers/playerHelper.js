@@ -9,13 +9,13 @@ const playerHelper = {
 
         if (increases && increases.length) {
             increases.forEach(mod => {
-                morale = randomizer.chance(mod.chance) ? morale + mod.value : 0;
+                morale = randomizer.chance(mod.chance) ? morale + mod.value : morale + 0;
             });
         }
 
         if (decreases && decreases.length) {
             decreases.forEach(mod => {
-                morale = randomizer.chance(mod.chance) ? morale - mod.value : 0;
+                morale = randomizer.chance(mod.chance) ? morale - mod.value : morale + 0;
             });
         }
 

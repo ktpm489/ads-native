@@ -256,4 +256,11 @@ describe('leagueHelper tests', () => {
             });
         });
     });
+    test('it update correctly the new status given the result', () => {
+        const teams = generator.teams(2);
+        const fixture = fixtureGenerator.generate(teams);
+        const matches = fixture.pop();
+        const results = round.simulate(matches, teams);
+        expect(leagueHelper.updateStatus(results, teamHelper.teamsToObject(teams)).length).toBe(2);
+    });
 });

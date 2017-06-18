@@ -41,6 +41,22 @@ const generator = {
             morale: randomizer.int(10, 100)
         }
     },
+    statusModifiers(){
+        return {
+            decreases: [
+                {
+                    chance: randomizer.int(10, 90),
+                    value: randomizer.int(1, 15)
+                }
+            ],
+            increases: [
+                {
+                    chance: randomizer.int(10, 90),
+                    value: randomizer.int(1, 15)
+                }
+            ]
+        };
+    },
     person(locale){
         faker.locale = locale;
         let name = 'a';

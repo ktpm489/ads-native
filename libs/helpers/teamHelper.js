@@ -29,6 +29,13 @@ const teamHelper = {
 
         return teamsObject;
     },
+    objectToTeamArray(teamObject){
+        const teams = [];
+        Object.keys(teamObject).forEach(k => {
+            teams.push(teamObject[k]);
+        });
+        return teams;
+    },
     scorers(team, goals){
         const orderedRoster = team.roster.sort((p1, p2) => extendedPositions[p1.position].weight < extendedPositions[p2.position].weight);
         const possibleScorers = orderedRoster.filter(p => p.position !== 'GK');
