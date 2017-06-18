@@ -1,10 +1,10 @@
-import {Actions} from 'react-native-router-flux';
 export const FETCH_USER_SUCCESS = 'fetch_user_success';
 export const FETCH_USER_FAILURE = 'fetch_user_failure';
 export const SAVE_USER_SUCCESS = 'save_user_success';
 export const SAVE_USER_FAILURE = 'save_user_failure';
 
 import {User} from '../../db';
+import {generateMainTeams} from './generators';
 
 export const fetchUser = () => {
     return dispatch => {
@@ -20,8 +20,8 @@ export const fetchUser = () => {
 export const saveUser = user => {
     return dispatch => {
         if (User.save(user)) {
-            dispatch(saveSuccess());
-            Actions.gameMain();
+            dispatch(saveSuccess(user));
+            dispatch(generateMainTeams())
         } else {
             return dispatch(saveFailure());
         }

@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Header, Body, Title, Container, Content, Text, Button} from 'native-base';
 
+import TeamCard from '../team/TeamCard';
+
 import {User} from '../../db/dto';
-import {generator} from '../../libs';
 
 class GameMainView extends Component {
     state = {
@@ -14,15 +15,10 @@ class GameMainView extends Component {
         User.delete();
     }
 
-    generateTeams() {
-        const teams = generator.teams();
-        console.log(teams);
-        this.setState({teams});
-    }
-
     _renderTeams() {
-        if (this.state.teams.length) {
-            return <Text>{`There are ${this.state.teams.length} teams`}</Text>
+        const {league} = this.props;
+        if (league.teams && league.teams.array.length) {
+            return league.teams.array.map((t,index) => <TeamCard key={index} team={t}/>)
         }
         return <Text/>
     }
@@ -42,12 +38,7 @@ class GameMainView extends Component {
                     <Button onPress={this.wipeAll.bind(this)}>
                         <Text>Wipe</Text>
                     </Button>
-
-
                     <Text>Main</Text>
-                    <Button onPress={this.generateTeams.bind(this)}>
-                        <Text>Generate Teams</Text>
-                    </Button>
                     {this._renderTeams()}
                 </Content>
             </Container>
@@ -55,9 +46,10 @@ class GameMainView extends Component {
     }
 }
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, league}) => {
     return {
-        user
+        user,
+        league
     };
 };
 
