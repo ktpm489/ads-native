@@ -6,7 +6,7 @@ const randomizer = {
         return Math.round(Math.random() * (high - low) + low);
     },
     chance(percentage){
-        return this.int(0, 100) < percentage;
+        return this.int(0, 99) < percentage;
     }
 };
 
