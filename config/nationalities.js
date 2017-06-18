@@ -1,36 +1,53 @@
 const extendedNationalities = {
     'it': {
-        name: 'Italy'
+        name: 'Italy',
+        flag: 'IT'
     },
     'en_GB': {
-        name: 'England'
+        name: 'England',
+        flag: 'GB'
     },
     'ru': {
-        name: 'Russia'
+        name: 'Russia',
+        flag: 'RU'
     },
     'es': {
-        name: 'Spain'
+        name: 'Spain',
+        flag: 'ES'
     },
     'es_MX': {
-        name: 'Mexico'
+        name: 'Mexico',
+        flag: 'MX'
     },
     'de': {
-        name: 'Germany'
+        name: 'Germany',
+        flag: 'DE'
+    },
+    'tr': {
+        name: 'Turkey',
+        flag: 'TR'
     },
     'fr': {
-        name: 'France'
+        name: 'France',
+        flag: 'FR'
     },
     'ja': {
-        name: 'Japan'
+        name: 'Japan',
+        flag: 'JP'
     },
     'nl': {
-        name: 'Netherlands'
+        name: 'Netherlands',
+        flag: 'NL'
+    },
+    'cz': {
+        name: 'Czech Republic',
+        flag: 'CZ'
     }
 
 };
 
 const nationalities = [
-    'it', 'en_GB', 'es', 'es_MX', 'de', 'fr', 'nl'
+    'it', 'en_GB', 'es', 'es_MX', 'de', 'fr', 'nl', 'tr', 'cz'
 ];
 
 export {nationalities, extendedNationalities};
