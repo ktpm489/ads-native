@@ -22,6 +22,7 @@ const playerHelper = {
         morale = morale < MIN_MORALE ? MIN_MORALE : morale;
         morale = morale > MAX_MORALE ? MAX_MORALE : morale;
 
+        morale = Math.round(morale);
         return {
             ...player,
             status: {

@@ -261,6 +261,7 @@ describe('leagueHelper tests', () => {
         const fixture = fixtureGenerator.generate(teams);
         const matches = fixture.pop();
         const results = round.simulate(matches, teams);
-        expect(leagueHelper.updateStatus(results, teamHelper.teamsToObject(teams)).length).toBe(2);
+        const updatedTeams = leagueHelper.updateStatus(results, teamHelper.teamsToObject(teams));
+        expect(updatedTeams.length).toBe(2);
     });
 });

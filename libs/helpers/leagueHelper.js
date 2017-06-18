@@ -111,6 +111,7 @@ const leagueHelper = {
                     return playerHelper.updateStatus(p, loserModifiers);
                 });
                 teams[r.loser] = teamHelper.updateStatus(teams[r.loser]);
+
                 teams[r.winner].roster = teams[r.winner].roster.map(p => {
                     return playerHelper.updateStatus(p, winnerModifiers)
                 });
