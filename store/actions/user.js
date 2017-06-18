@@ -1,3 +1,4 @@
+import {Actions} from 'react-native-router-flux';
 export const FETCH_USER_SUCCESS = 'fetch_user_success';
 export const FETCH_USER_FAILURE = 'fetch_user_failure';
 export const SAVE_USER_SUCCESS = 'save_user_success';
@@ -19,7 +20,8 @@ export const fetchUser = () => {
 export const saveUser = user => {
     return dispatch => {
         if (User.save(user)) {
-            return dispatch(saveSuccess());
+            dispatch(saveSuccess());
+            Actions.gameMain();
         } else {
             return dispatch(saveFailure());
         }

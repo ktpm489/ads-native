@@ -1,4 +1,4 @@
-import {realm, saveObject} from '../realm';
+import {realm, saveObject, deleteObject} from '../realm';
 
 const User = {
     schema: 'User',
@@ -12,6 +12,10 @@ const User = {
             key: this.schema
         };
         return saveObject(this.schema, user);
+    },
+    delete(){
+        const user = realm.objectForPrimaryKey(this.schema, this.schema);
+        return deleteObject(user);
     }
 };
 

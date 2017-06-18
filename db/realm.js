@@ -7,6 +7,12 @@ const toJs = (resultSet) => {
     return resultSet.map(x => Object.assign({}, x));
 };
 
+const deleteObject = model => {
+    realm.write(() => {
+        realm.delete(model);
+    });
+};
+
 const getObjects = modelName => {
     return toJs(realm.objects(modelName));
 };
@@ -24,4 +30,4 @@ const saveObject = (modelName, data) => {
     }
 };
 
-export {realm, toJs, getObjects, saveObject};
+export {realm, toJs, getObjects, saveObject, deleteObject};

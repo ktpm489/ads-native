@@ -50,4 +50,6 @@ const nationalities = [
     'it', 'en_GB', 'es', 'es_MX', 'de', 'fr', 'nl', 'tr', 'cz'
 ];
 
-export {nationalities, extendedNationalities};
+const nations = nationalities.map(n => extendedNationalities[n].name);
+
+export {nationalities, extendedNationalities, nations};
