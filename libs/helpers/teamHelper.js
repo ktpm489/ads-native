@@ -42,9 +42,11 @@ const teamHelper = {
         const scorers = [];
         range(goals).forEach(_ => {
             if (randomizer.chance(80)) {
-                scorers.push(possibleScorers[randomizer.int(0, 3)]);
+                const {name, surname} = possibleScorers[randomizer.int(0, 3)];
+                scorers.push({name, surname});
             } else {
-                scorers.push(randomizer.pickOne(possibleScorers));
+                const {name, surname} = randomizer.pickOne(possibleScorers);
+                scorers.push({name, surname});
             }
         });
 

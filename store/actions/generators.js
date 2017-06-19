@@ -6,6 +6,7 @@ const TEAM_NUMBER = 4;
 export const generateMainTeams = () => {
     const array = generator.teams(TEAM_NUMBER);
     const object = teamHelper.teamsToObject(array);
+
     Actions.gameMain();
     return {
         type: SET_TEAMS,

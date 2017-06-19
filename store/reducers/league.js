@@ -7,7 +7,7 @@ const initialState = {
             array: {}
         },
         table: {},
-        fixture: {},
+        fixture: [],
         lastResults: []
     }
 ;
