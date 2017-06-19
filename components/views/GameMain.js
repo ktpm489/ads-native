@@ -4,7 +4,7 @@ import {Header, Body, Title, Container, Content, Text, Button} from 'native-base
 
 import TeamCard from '../team/TeamCard';
 
-import {User} from '../../db/dto';
+import {wipeDb} from '../../db/realm';
 
 class GameMainView extends Component {
     state = {
@@ -12,7 +12,7 @@ class GameMainView extends Component {
     };
 
     wipeAll() {
-        User.delete();
+        wipeDb();
     }
 
     _renderTeams() {

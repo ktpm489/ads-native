@@ -3,6 +3,12 @@ import Realm from 'realm';
 import {schemas} from './schemas';
 const realm = new Realm(schemas.pop());
 
+const wipeDb = () => {
+    realm.write(() => {
+        realm.deleteAll();
+    });
+};
+
 const toJs = (resultSet) => {
     return resultSet.map(x => Object.assign({}, x));
 };
@@ -17,17 +23,28 @@ const getObjects = modelName => {
     return toJs(realm.objects(modelName));
 };
 
+const saveObjects = (modelName, array) => {
+    return array.map(data => saveObject(modelName, data));
+};
+
 const saveObject = (modelName, data) => {
     try {
-        console.log(data);
         realm.write(() => {
             realm.create(modelName, data, true);
         });
         return true;
     } catch (error) {
-        console.log('error', error);
+        console.log(modelName, error, data);
         return false;
     }
 };
 
-export {realm, toJs, getObjects, saveObject, deleteObject};
+export {
+    realm,
+    wipeDb,
+    toJs,
+    getObjects,
+    saveObject,
+    saveObjects,
+    deleteObject
+};
