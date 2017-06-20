@@ -5,14 +5,13 @@ export const SAVE_USER_FAILURE = 'save_user_failure';
 
 import {User, Team} from '../../db';
 import {generateMainTeams} from './generators';
-import {setTeams} from './league';
+import {setTeams} from './teams';
 
 export const fetchUser = () => {
     return dispatch => {
         const user = User.get();
         const teams = Team.getAll();
         if (user) {
-            console.log("stuff", teams);
             dispatch(fetchSuccess(user));
             dispatch(setTeams(teams));
         } else {

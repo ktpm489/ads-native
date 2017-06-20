@@ -2,12 +2,12 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
 import user from './reducers/user';
-import league from './reducers/league';
+import teams from './reducers/teams';
 
 
 const reducers = combineReducers({
     user,
-    league
+    teams
 });
 
 

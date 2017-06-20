@@ -6,19 +6,16 @@ import TeamCard from '../team/TeamCard';
 
 import {wipeDb} from '../../db/realm';
 
-class GameMainView extends Component {
-    state = {
-        teams: []
-    };
-
+class NewGameView extends Component {
     wipeAll() {
         wipeDb();
     }
 
     _renderTeams() {
-        const {league} = this.props;
-        if (league.teams && league.teams.array.length) {
-            return league.teams.array.map((t,index) => <TeamCard key={index} team={t}/>)
+        let {teams} = this.props;
+        if (teams.teams && teams.teams.array.length) {
+            teams = teams.teams.array;
+            return teams.map((t, index) => <TeamCard key={index} team={t}/>)
         }
         return <Text/>
     }
@@ -46,10 +43,10 @@ class GameMainView extends Component {
     }
 }
 
-const mapStateToProps = ({user, league}) => {
+const mapStateToProps = ({user, teams}) => {
     return {
         user,
-        league
+        teams
     };
 };
 
@@ -57,5 +54,5 @@ const mapDispatchToProps = () => {
     return {};
 };
 
-const GameMain = connect(mapStateToProps, mapDispatchToProps)(GameMainView);
-export {GameMain}
+const NewGame = connect(mapStateToProps, mapDispatchToProps)(NewGameView);
+export {NewGame}
