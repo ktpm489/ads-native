@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Header, Body, Title, Container, Content, Text, Button} from 'native-base';
-
+import {HeaderSpacer} from '../common';
 import TeamCard from '../team/TeamCard';
 
 import {wipeDb} from '../../db/realm';
@@ -24,17 +24,14 @@ class NewGameView extends Component {
         const {user} = this.props;
         return (
             <Container>
-                <Header>
-                    <Body>
-                    <Title>
-                        {`${user.name} ${user.surname}`}
-                    </Title>
-                    </Body>
-                </Header>
+                <HeaderSpacer />
                 <Content>
                     <Button onPress={this.wipeAll.bind(this)}>
                         <Text>Wipe</Text>
                     </Button>
+                    <Title>
+                        {`${user.name} ${user.surname}`}
+                    </Title>
                     <Text>Main</Text>
                     {this._renderTeams()}
                 </Content>

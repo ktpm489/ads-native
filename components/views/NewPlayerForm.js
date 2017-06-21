@@ -114,7 +114,7 @@ const mapStateToProps = ({user}) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         save(user){
             dispatch(saveUser(user));
