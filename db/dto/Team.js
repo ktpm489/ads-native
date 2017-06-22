@@ -1,4 +1,4 @@
-import {realm, saveObjects, getObjects} from '../realm';
+import {realm, toJs, saveObjects, getObjects} from '../realm';
 
 const Team = {
     schema: 'Team',
