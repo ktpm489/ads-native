@@ -11,6 +11,7 @@
 		"faker": "^4.1.0",
 		"moment": "^2.18.1",
 		"native-base": "^2.1.5",
+		"numeral": "^2.0.6",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.45.1",
 		"react-native-datepicker": "^1.5.1",

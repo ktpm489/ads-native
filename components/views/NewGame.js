@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Header, Body, Title, Container, Content, Text, Button} from 'native-base';
 import {HeaderSpacer} from '../common';
-import TeamCard from '../team/TeamCard';
+import TeamCard from '../team/ClickableTeamCard';
 
 import {wipeDb} from '../../db/realm';
 

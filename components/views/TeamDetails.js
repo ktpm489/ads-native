@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Container, Content, Text} from 'native-base';
+import {Container, Content, Text, H2, H3, Card} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
+import TeamCard from '../team/cards/TeamCard';
+import CoachCard from '../team/cards/CoachCard';
 import PlayersTableRow from '../team/tables/PlayersTableRow';
 import PlayersTableHeader from '../team/tables/PlayersTableHeader';
 
@@ -15,14 +17,19 @@ class TeamDetailsView extends Component {
 
     render() {
         const {team} = this.props.navigation;
+        const {coach} = team;
         console.log(toJs(team.roster));
         return (
             <Container>
                 <HeaderSpacer/>
                 <Content>
-                    <Text>{team.name}</Text>
-                    <PlayersTableHeader/>
-                    {this._renderRoster(toJs(team.roster))}
+                    <TeamCard team={team}/>
+                    <CoachCard coach={coach}/>
+                    <Card>
+                        <H3>Roster</H3>
+                        <PlayersTableHeader/>
+                        {this._renderRoster(toJs(team.roster))}
+                    </Card>
                 </Content>
             </Container>
         );
