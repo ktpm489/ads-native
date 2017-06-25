@@ -62,8 +62,9 @@ const playerHelper = {
         return 0.5;
     },
     agePriceModifier(age){
-        if (age > 32) return -0.5;
-        if (age > 30) return -0.2;
+        if (age > 34) return -0.82;
+        if (age > 32) return -0.54;
+        if (age > 30) return -0.25;
         if (age > 28) return 0.235;
         if (age > 26) return 0.134;
         if (age > 22) return 0.21;
