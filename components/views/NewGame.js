@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Header, Body, Title, Container, Content, Text, Button} from 'native-base';
-import {HeaderSpacer} from '../common';
+import {Header, Card, Title, Container, Content, Text, Button} from 'native-base';
+import {HeaderSpacer, B} from '../common';
 import TeamCard from '../team/ClickableTeamCard';
 
 import {wipeDb} from '../../db/realm';
@@ -29,11 +29,12 @@ class NewGameView extends Component {
                     <Button onPress={this.wipeAll.bind(this)}>
                         <Text>Wipe</Text>
                     </Button>
-                    <Title>
-                        {`${user.name} ${user.surname}`}
-                    </Title>
-                    <Text>Main</Text>
-                    {this._renderTeams()}
+                    <Card>
+                        <Text>Ehy there Mr. <B>{`${user.surname}`}</B>, those are the teams that will compete in the
+                            next
+                            championship.</Text>
+                        {this._renderTeams()}
+                    </Card>
                 </Content>
             </Container>
         );

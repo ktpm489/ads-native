@@ -1,6 +1,23 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Container, Content, Header, Title, Body, Form, Input, Item, Label, Text, Button} from 'native-base';
+import {
+    Container,
+    Content,
+    Header,
+    Title,
+    Card,
+    CardItem,
+    Body,
+    Form,
+    Input,
+    Item,
+    Label,
+    Text,
+    H3,
+    Row,
+    Col,
+    Button
+} from 'native-base';
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 import {connect} from 'react-redux';
@@ -36,6 +53,11 @@ class NewPlayerFormView extends Component {
         }
     }
 
+    isReadyToSave() {
+        const {name, surname, dob} = this.state;
+        return name !== '' && surname !== '' && dob !== undefined;
+    }
+
     saveUser() {
         const {name, surname, dob} = this.state;
         this.props.save({
@@ -52,50 +74,72 @@ class NewPlayerFormView extends Component {
             <Container>
                 <HeaderSpacer/>
                 <Content>
-                    <View>
-                        <Form>
-                            <Item stackedLabel>
-                                <Label>Name</Label>
-                                <Input value={name} onChangeText={name => this.setState({name: ucFirst(name)})}/>
-                            </Item>
-                            <Item stackedLabel>
-                                <Label>Surname</Label>
-                                <Input value={surname}
-                                       onChangeText={surname => this.setState({surname: ucFirst(surname)})}/>
-                            </Item>
-                            <View style={dobContainerStyle}>
-                                <Label>Date of Birth</Label>
-                                <DatePicker
-                                    style={{width: 200}}
-                                    date={dob}
-                                    mode="date"
-                                    placeholder="select date"
-                                    format={DATE_FORMAT}
-                                    minDate={MIN_DATE}
-                                    maxDate={moment().format(DATE_FORMAT)}
-                                    confirmBtnText="Confirm"
-                                    cancelBtnText="Cancel"
-                                    customStyles={{
-                                        dateIcon: {
-                                            position: 'absolute',
-                                            left: 0,
-                                            top: 4,
-                                            marginLeft: 0
-                                        },
-                                        dateInput: {
-                                            marginLeft: 36
-                                        }
-                                    }}
-                                    onDateChange={dob => {
-                                        this.setState({dob})
-                                    }}
-                                />
-                            </View>
-                            <Button onPress={this.saveUser.bind(this)}>
-                                <Text>Save</Text>
-                            </Button>
-                        </Form>
-                    </View>
+                    <Card>
+                        <CardItem header>
+                            <H3>Who are you?</H3>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                            <Row>
+                                <Text>Insert your info to start the game</Text>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form>
+                                        <Item floatingLabel>
+                                            <Label>Name</Label>
+                                            <Input value={name}
+                                                   onChangeText={name => this.setState({name: ucFirst(name)})}/>
+                                        </Item>
+                                        <Item floatingLabel>
+                                            <Label>Surname</Label>
+                                            <Input value={surname}
+                                                   onChangeText={surname => this.setState({surname: ucFirst(surname)})}/>
+                                        </Item>
+                                        <View style={dobContainerStyle}>
+                                            <Label>Date of Birth</Label>
+                                            <DatePicker
+                                                style={{width: 200}}
+                                                date={dob}
+                                                mode="date"
+                                                placeholder="select date"
+                                                format={DATE_FORMAT}
+                                                minDate={MIN_DATE}
+                                                maxDate={moment().format(DATE_FORMAT)}
+                                                confirmBtnText="Confirm"
+                                                cancelBtnText="Cancel"
+                                                customStyles={{
+                                                    dateIcon: {
+                                                        position: 'absolute',
+                                                        left: 0,
+                                                        top: 4,
+                                                        marginLeft: 0
+                                                    },
+                                                    dateInput: {
+                                                        marginLeft: 36
+                                                    }
+                                                }}
+                                                onDateChange={dob => {
+                                                    this.setState({dob})
+                                                }}
+                                            />
+                                        </View>
+                                    </Form>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col />
+                                <Col />
+                                <Col />
+                                <Col>
+                                    <Button disabled={!this.isReadyToSave()} onPress={this.saveUser.bind(this)}>
+                                        <Text>Start</Text>
+                                    </Button>
+                                </Col>
+                            </Row>
+                            </Body>
+                        </CardItem>
+                    </Card>
                 </Content>
             </Container>
         );

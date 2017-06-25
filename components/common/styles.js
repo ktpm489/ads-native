@@ -1,4 +1,7 @@
 const commonStyles = {
+    boldTextStyle: {
+        fontWeight: 'bold'
+    },
     tableHeaderTextStyle: {
         fontWeight: 'bold'
     },
