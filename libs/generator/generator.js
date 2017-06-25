@@ -5,6 +5,7 @@ import {nationalities} from '../../config/nationalities';
 import {positions} from '../../config/positions';
 import {modules} from '../../config/modules';
 import {teamNames} from '../../config/teamDefinitions';
+import {playerHelper, coachHelper} from '../helpers';
 
 const GENDER_MALE = 0;
 
@@ -69,36 +70,44 @@ const generator = {
         }
         return {
             name,
-            surname: faker.name.lastName(GENDER_MALE),
-            wage: 0
+            surname: faker.name.lastName(GENDER_MALE)
         }
     },
     coach(forcedValues = {}){
         const locale = forcedValues.nationality || 'it';
         const person = this.person(locale);
 
+        const skill = this.skill();
+        const age = this.coachAge();
+
         return {
             ...person,
             status: this.status(),
-            age: this.coachAge(),
+            age,
             nationality: locale,
-            skill: this.skill(),
+            skill,
             module: this.module(),
+            wage: coachHelper.calculateWage({skill, age}),
             ...forcedValues
         }
     },
     player(forcedValues = {}){
         const locale = forcedValues.nationality || 'it';
         const person = this.person(locale);
+        const position = this.position();
+        const age = this.playerAge();
+        const skill = this.skill();
+        const value = playerHelper.calculateValue({position, skill, age});
 
         return {
             ...person,
             status: this.status(),
-            age: this.playerAge(),
+            age,
             nationality: locale,
-            skill: this.skill(),
-            value: 0,
-            position: this.position(),
+            skill,
+            value,
+            position,
+            wage: playerHelper.calculateWage({age, value}),
             ...forcedValues
         }
     },
