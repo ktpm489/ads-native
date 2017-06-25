@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-import {Container, Content} from 'native-base';
+import {Container, Content, Text} from 'native-base';
 import {connect} from 'react-redux';
 
 import {HeaderSpacer} from '../common';
 
 class PlayerDetailsView extends Component {
     render() {
+        const {player} = this.props.navigation;
         return (
             <Container>
                 <HeaderSpacer/>
                 <Content>
-                    <Text>Player Details</Text>
+                    <Text>{`${player.name} ${player.surname}`}</Text>
                 </Content>
             </Container>
         );
@@ -18,9 +19,9 @@ class PlayerDetailsView extends Component {
 }
 
 
-const mapStateToProps = ({routes}) => {
+const mapStateToProps = ({navigation}) => {
     return {
-        routes
+        navigation
     }
 };
 

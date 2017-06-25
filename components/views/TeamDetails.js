@@ -3,11 +3,14 @@ import {Container, Content, Text} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
+import PlayersTableRow from '../team/tables/PlayersTableRow';
+import PlayersTableHeader from '../team/tables/PlayersTableHeader';
+
 import {toJs} from '../../db/realm'
 
 class TeamDetailsView extends Component {
     _renderRoster(roster) {
-        return roster.map((p, index) => <Text key={index}>{`${p.name} ${p.surname}`}</Text>);
+        return roster.map((p, index) => <PlayersTableRow key={index} player={p}/>);
     }
 
     render() {
@@ -18,6 +21,7 @@ class TeamDetailsView extends Component {
                 <HeaderSpacer/>
                 <Content>
                     <Text>{team.name}</Text>
+                    <PlayersTableHeader/>
                     {this._renderRoster(toJs(team.roster))}
                 </Content>
             </Container>
