@@ -31,7 +31,7 @@ class App extends Component {
                     </Scene>
                     <Scene key="teamDetails" component={TeamDetails} title="Team Details"/>
                     <Scene key="coachDetails" component={CoachDetails} title="Coach Details"/>
-                    <Scene key="playerDetails" component={PlayerDetails} title="Coach Details"/>
+                    <Scene key="playerDetails" component={PlayerDetails} title="Player Details"/>
                 </Router>
             </Provider>
         );

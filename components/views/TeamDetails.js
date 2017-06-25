@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Content, Text, H2, H3, Card} from 'native-base';
+import {Container, Content, Text, H2, H3, Card, CardItem, Body} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
@@ -26,7 +26,9 @@ class TeamDetailsView extends Component {
                     <TeamCard team={team}/>
                     <CoachCard coach={coach}/>
                     <Card>
-                        <H3>Roster</H3>
+                        <CardItem header>
+                            <H3>Roster</H3>
+                        </CardItem>
                         <PlayersTableHeader/>
                         {this._renderRoster(toJs(team.roster))}
                     </Card>
