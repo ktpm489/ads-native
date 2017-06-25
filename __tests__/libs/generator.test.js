@@ -10,6 +10,7 @@ describe('coach generator', () => {
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
+            wage: expect.any(Number),
             skill: expect.any(Number),
             module: expect.any(String)
         });
@@ -24,6 +25,7 @@ describe('coach generator', () => {
             nationality: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
+            wage: expect.any(Number),
             module
         });
     });
@@ -38,6 +40,7 @@ describe('coach generator', () => {
             module: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
+            wage: expect.any(Number),
             nationality
         });
     });
@@ -53,6 +56,8 @@ describe('player generator', () => {
             nationality: expect.any(String),
             age: expect.any(Number),
             skill: expect.any(Number),
+            wage: expect.any(Number),
+            value: expect.any(Number),
             position: expect.anything()
         });
     });
@@ -66,6 +71,8 @@ describe('player generator', () => {
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
+            wage: expect.any(Number),
+            value: expect.any(Number),
             skill: expect.any(Number),
             position
         });
@@ -80,6 +87,8 @@ describe('player generator', () => {
             status: expect.anything(),
             position: expect.any(String),
             age: expect.any(Number),
+            wage: expect.any(Number),
+            value: expect.any(Number),
             skill: expect.any(Number),
             nationality
         });

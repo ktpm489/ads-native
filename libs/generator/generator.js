@@ -69,7 +69,8 @@ const generator = {
         }
         return {
             name,
-            surname: faker.name.lastName(GENDER_MALE)
+            surname: faker.name.lastName(GENDER_MALE),
+            wage: 0
         }
     },
     coach(forcedValues = {}){
@@ -96,6 +97,7 @@ const generator = {
             age: this.playerAge(),
             nationality: locale,
             skill: this.skill(),
+            value: 0,
             position: this.position(),
             ...forcedValues
         }

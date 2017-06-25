@@ -8,6 +8,7 @@ Coach.schema = {
         age: 'int',
         nationality: 'string',
         skill: 'int',
+        wage: 'int',
         module: 'string',
         status: {type: 'Status'}
     }
