@@ -42,7 +42,7 @@ const playerHelper = {
 
         //Strikers
         if (player.position === 'S') {
-            price += randomizer.int(1, 4);
+            price += randomizer.chance(player.skill) ? randomizer.int(1, 3) : 0;
         }
 
         if (price < 0) {
