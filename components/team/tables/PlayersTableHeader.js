@@ -1,28 +1,16 @@
 import React, {Component} from 'react';
-import {Text, Row, Col} from 'native-base';
+import {Th} from '../../common';
 
-import {commonStyles} from '../../common';
-
-const {tableHeaderTextStyle} = commonStyles;
+const columns = [
+    {size: 10, value: '#'},
+    {size: 50, value: 'Info'},
+    {size: 20, value: 'Position'},
+    {size: 20, value: 'Skill'},
+];
 
 class PlayersTableHeader extends Component {
     render() {
-        return (
-            <Row>
-                <Col size={10}>
-                    <Text style={tableHeaderTextStyle}>#</Text>
-                </Col>
-                <Col size={50}>
-                    <Text style={tableHeaderTextStyle}>Info</Text>
-                </Col>
-                <Col size={20}>
-                    <Text style={tableHeaderTextStyle}>Position</Text>
-                </Col>
-                <Col size={20}>
-                    <Text style={tableHeaderTextStyle}>Skill</Text>
-                </Col>
-            </Row>
-        );
+        return <Th columns={columns}/>;
     }
 }
 
