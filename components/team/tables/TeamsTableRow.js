@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {Text} from 'native-base';
 import {Flag, Tr} from '../../common';
