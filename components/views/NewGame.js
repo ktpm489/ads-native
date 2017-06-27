@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Header, Card, Title, Container, Content, Text, Button} from 'native-base';
 import {HeaderSpacer, B} from '../common';
-import TeamCard from '../team/ClickableTeamCard';
+import TeamsTableHeader from '../team/tables/TeamsTableHeader';
+import TeamsTableRow from '../team/tables/TeamsTableRow';
 
 import {wipeDb} from '../../db/realm';
 
@@ -15,7 +16,7 @@ class NewGameView extends Component {
         let {teams} = this.props;
         if (teams.teams && teams.teams.array.length) {
             teams = teams.teams.array;
-            return teams.map((t, index) => <TeamCard key={index} team={t}/>)
+            return teams.map((t, index) => <TeamsTableRow key={index} team={t}/>)
         }
         return <Text/>
     }
@@ -33,6 +34,7 @@ class NewGameView extends Component {
                         <Text>Ehy there Mr. <B>{`${user.surname}`}</B>, those are the teams that will compete in the
                             next
                             championship.</Text>
+                        <TeamsTableHeader/>
                         {this._renderTeams()}
                     </Card>
                 </Content>

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Th} from '../../common';
 
 const columns = [
-    {size: 10, value: '#'},
+    {size: 5, value: '#'},
     {size: 50, value: 'Info'},
-    {size: 20, value: 'Position'},
+    {size: 25, value: 'Position'},
     {size: 20, value: 'Skill'},
 ];
 

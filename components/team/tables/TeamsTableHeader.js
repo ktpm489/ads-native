@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {Th} from '../../common';
 
 const columns = [
-    {size: 35, value: 'Team'},
-    {size: 20, value: 'Avg Skill'},
-    {size: 20, value: 'Avg Age'},
-    {size: 25, value: '# Players'},
+    {size: 30, value: 'Team'},
+    {size: 15, value: 'Nation'},
+    {size: 17, value: 'Avg Skill'},
+    {size: 17, value: 'Avg Age'},
+    {size: 20, value: 'Players'},
 ];
 
 class TeamsTableHeader extends Component {
