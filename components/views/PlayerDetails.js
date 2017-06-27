@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 import {connect} from 'react-redux';
-import {Flag, HeaderSpacer, commonStyles} from '../common';
+import {Flag, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
 
 import {formatCurrency} from '../../utils';
 import {extendedPositions} from '../../config/positions';
@@ -22,6 +22,14 @@ class PlayerDetailsView extends Component {
                         </CardItem>
                         <CardItem>
                             <Body>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Morale</Text>
+                                </Col>
+                                <Col>
+                                    <IndicatorBar value={player.status.morale}/>
+                                </Col>
+                            </Row>
                             <Row style={tableRowStyle}>
                                 <Col>
                                     <Text style={tableHeaderTextStyle}>Age</Text>

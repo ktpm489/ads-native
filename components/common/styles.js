@@ -1,3 +1,7 @@
+const colors = {
+    softBorderColor: '#d7d7d7',
+};
+
 const commonStyles = {
     boldTextStyle: {
         fontWeight: 'bold'
@@ -7,9 +11,9 @@ const commonStyles = {
     },
     tableRowStyle: {
         borderTopWidth: 1,
-        borderColor: '#d7d7d7',
+        borderColor: colors.softBorderColor,
         padding: 5
     }
 };
 
-export {commonStyles}
+export {commonStyles, colors}
