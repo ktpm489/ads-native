@@ -5,3 +5,4 @@ export * from './Tr';
 export * from './HeaderSpacer';
 export * from './Dropdown';
 export * from './Flag';
+export * from './IndicatorBar';
