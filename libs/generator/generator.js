@@ -71,7 +71,7 @@ const generator = {
         return {
             name,
             surname: faker.name.lastName(GENDER_MALE),
-            contract: randomizer.int(0, 6)
+            contract: randomizer.int(1, 5)
         }
     },
     coach(forcedValues = {}){
