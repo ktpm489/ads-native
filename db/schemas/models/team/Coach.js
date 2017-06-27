@@ -5,6 +5,7 @@ Coach.schema = {
     properties: {
         name: 'string',
         surname: 'string',
+        contract: 'int',
         age: 'int',
         nationality: 'string',
         skill: 'int',

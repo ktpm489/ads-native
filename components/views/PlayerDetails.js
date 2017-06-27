@@ -48,10 +48,10 @@ class PlayerDetailsView extends Component {
                             </Row>
                             <Row style={tableRowStyle}>
                                 <Col>
-                                    <Text style={tableHeaderTextStyle}>Wage</Text>
+                                    <Text style={tableHeaderTextStyle}>Contract</Text>
                                 </Col>
                                 <Col>
-                                    <Text>{`${formatCurrency(player.wage)}`}</Text>
+                                    <Text>{`${formatCurrency(player.wage)} (${player.contract} years left)`}</Text>
                                 </Col>
                             </Row>
                             <Row style={tableRowStyle}>
