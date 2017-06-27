@@ -18,23 +18,27 @@ class TeamsTableRowView extends Component {
         const {team} = this.props;
         const columns = [
             {
-                size: 30,
-                value: <Text style={{marginLeft: 5}}>{team.name}</Text>
+                size: 5,
+                value: <Text/>
             },
             {
-                size: 15,
+                size: 40,
+                value: <Text>{team.name}</Text>
+            },
+            {
+                size: 10,
                 value: <Flag nationality={team.nationality}/>
             },
             {
-                size: 17,
+                size: 10,
                 value: <Text>{teamHelper.averageSkill(team)}</Text>
             },
             {
-                size: 17,
+                size: 15,
                 value: <Text>{teamHelper.averageAge(team)}</Text>
             },
             {
-                size: 20,
+                size: 15,
                 value: <Text>{`${team.roster.length}`}</Text>
             },
         ];
