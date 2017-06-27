@@ -70,7 +70,8 @@ const generator = {
         }
         return {
             name,
-            surname: faker.name.lastName(GENDER_MALE)
+            surname: faker.name.lastName(GENDER_MALE),
+            contract: randomizer.int(0, 6)
         }
     },
     coach(forcedValues = {}){

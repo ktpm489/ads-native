@@ -7,6 +7,7 @@ describe('coach generator', () => {
         expect(coach).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
@@ -21,6 +22,7 @@ describe('coach generator', () => {
         expect(coach).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
@@ -36,6 +38,7 @@ describe('coach generator', () => {
         expect(coach).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             module: expect.any(String),
             age: expect.any(Number),
@@ -52,6 +55,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
@@ -68,6 +72,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             nationality: expect.any(String),
             age: expect.any(Number),
@@ -84,6 +89,7 @@ describe('player generator', () => {
         expect(player).toEqual({
             name: expect.any(String),
             surname: expect.any(String),
+            contract: expect.any(Number),
             status: expect.anything(),
             position: expect.any(String),
             age: expect.any(Number),
