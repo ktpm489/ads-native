@@ -10,7 +10,6 @@ describe('playerHelper tests', () => {
         players.forEach(t => {
             const playerValue = playerHelper.calculateValue(t.p);
             expect(playerValue).toBeGreaterThan(t.e);
-            console.log(playerValue);
         });
     });
 
@@ -18,9 +17,11 @@ describe('playerHelper tests', () => {
         const players = [
             {skill: 50, age: 20},
             {skill: 100, age: 20},
+            {skill: 100, age: 30},
         ];
         const expectedWages = [
-            10000,
+            1000,
+            1000000,
             1000000
         ];
         const playersWithValue = players.map(p => {

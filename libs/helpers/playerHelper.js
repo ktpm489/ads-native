@@ -4,7 +4,7 @@ const MAX_MORALE = 100;
 
 const PRICE_MULTIPLIER = 1000000;
 const MIN_PRICE = 0.01;
-const MIN_WAGE = 0.01;
+const MIN_WAGE = 10000;
 
 const playerHelper = {
     updateStatus(player, modifiers = {}){
@@ -77,7 +77,7 @@ const playerHelper = {
         const modifiedValue = value * (1 + this.agePriceModifier(age));
         let wage = Math.round(modifiedValue * (randomizer.int(1, 10) / 100));
         if (wage <= MIN_WAGE) {
-            wage = randomizer.int(1, 10) / 100;
+            wage = (randomizer.int(8, 70) * 1000) + randomizer.int(100, 500);
         }
         return wage;
     }
