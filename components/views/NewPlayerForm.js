@@ -61,8 +61,8 @@ class NewPlayerFormView extends Component {
     saveUser() {
         const {name, surname, dob} = this.state;
         this.props.save({
-            name,
-            surname,
+            name: name.trim(),
+            surname: surname.trim(),
             dob
         });
     }
