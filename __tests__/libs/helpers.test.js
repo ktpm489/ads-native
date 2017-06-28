@@ -2,6 +2,40 @@ import {teamHelper, playerHelper, generator, fixtureGenerator, round, leagueHelp
 import {range} from '../../utils';
 
 describe('playerHelper tests', () => {
+    test('it calculates the value in a reasonable range', () => {
+        const players = [
+            {p: {skill: 50, age: 20}, e: 100000},
+            {p: {skill: 100, age: 20}, e: 130000000},
+        ];
+        players.forEach(t => {
+            const playerValue = playerHelper.calculateValue(t.p);
+            expect(playerValue).toBeGreaterThan(t.e);
+            console.log(playerValue);
+        });
+    });
+
+    test('it calculates the wage in a reasonable range', () => {
+        const players = [
+            {skill: 50, age: 20},
+            {skill: 100, age: 20},
+        ];
+        const expectedWages = [
+            10000,
+            1000000
+        ];
+        const playersWithValue = players.map(p => {
+            const value = playerHelper.calculateValue(p);
+            return {
+                ...p,
+                value
+            };
+        });
+
+        playersWithValue.forEach((p, index) => {
+            const wage = playerHelper.calculateWage(p);
+            expect(wage).toBeGreaterThan(expectedWages[index]);
+        });
+    });
     test('it leaves the morale as it is if no modifiers specified', () => {
         const player = {
             status: {
