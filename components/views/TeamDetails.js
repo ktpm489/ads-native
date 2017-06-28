@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Content, Text, H2, H3, Card, CardItem, Body} from 'native-base';
+import {Container, Content, Text, H2, H3, Card, CardItem} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
@@ -8,6 +8,7 @@ import CoachCard from '../team/cards/CoachCard';
 import PlayersTableRow from '../team/tables/PlayersTableRow';
 import PlayersTableHeader from '../team/tables/PlayersTableHeader';
 
+import {byPlayerPosition} from '../../libs/misc';
 import {toJs} from '../../db/realm'
 
 class TeamDetailsView extends Component {
@@ -18,7 +19,7 @@ class TeamDetailsView extends Component {
     render() {
         const {team} = this.props.navigation;
         const {coach} = team;
-        console.log(toJs(team.roster));
+        const roster = toJs(team.roster).sort(byPlayerPosition);
         return (
             <Container>
                 <HeaderSpacer/>
@@ -30,7 +31,7 @@ class TeamDetailsView extends Component {
                             <H3>Roster</H3>
                         </CardItem>
                         <PlayersTableHeader/>
-                        {this._renderRoster(toJs(team.roster))}
+                        {this._renderRoster(roster)}
                     </Card>
                 </Content>
             </Container>
