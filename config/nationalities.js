@@ -3,7 +3,7 @@ const extendedNationalities = {
         name: 'Italy',
         flag: 'IT'
     },
-    'en_GB': {
+    'en': {
         name: 'England',
         flag: 'GB'
     },
@@ -14,10 +14,6 @@ const extendedNationalities = {
     'es': {
         name: 'Spain',
         flag: 'ES'
-    },
-    'es_MX': {
-        name: 'Mexico',
-        flag: 'MX'
     },
     'de': {
         name: 'Germany',
@@ -47,7 +43,7 @@ const extendedNationalities = {
 };
 
 const nationalities = [
-    'it', 'en_GB', 'es', 'es_MX', 'de', 'fr', 'nl', 'tr', 'cz'
+    'it', 'en', 'es', 'de', 'fr', 'nl', 'tr', 'cz'
 ];
 
 const nations = nationalities.map(n => extendedNationalities[n].name);
