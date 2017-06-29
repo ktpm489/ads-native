@@ -1,6 +1,6 @@
 import {randomizer} from './randomizer';
-import person from '../../config/providers/person.json';
-import cities from '../../config/providers/cities.json';
+import person from '../../config/providers/person';
+import cities from '../../config/providers/cities';
 
 
 const faker = {
