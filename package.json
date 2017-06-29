@@ -8,7 +8,6 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"faker": "^4.1.0",
 		"moment": "^2.18.1",
 		"native-base": "^2.1.5",
 		"numeral": "^2.0.6",

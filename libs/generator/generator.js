@@ -1,4 +1,4 @@
-import faker from 'faker';
+import {faker} from '../generator/faker';
 import {range, format} from '../../utils';
 import {randomizer} from './randomizer';
 import {nationalities} from '../../config/nationalities';
@@ -7,8 +7,6 @@ import {modules} from '../../config/modules';
 import {teamNames} from '../../config/teamDefinitions';
 import {playerHelper, coachHelper} from '../helpers';
 
-const GENDER_MALE = 0;
-
 const PLAYER_AGE_RANGE = [15, 41];
 const COACH_AGE_RANGE = [29, 80];
 const SKILL_RANGE = [40, 100];
@@ -16,8 +14,7 @@ const SKILL_RANGE = [40, 100];
 
 const generator = {
     teamName(nationality = 'it'){
-        faker.locale = nationality;
-        return format(randomizer.pickOne(teamNames), faker.address.city());
+        return format(randomizer.pickOne(teamNames), faker.city(nationality));
     },
     playerAge(){
         return randomizer.int(PLAYER_AGE_RANGE[0], PLAYER_AGE_RANGE[1]);
@@ -59,18 +56,9 @@ const generator = {
         };
     },
     person(locale){
-        faker.locale = locale;
-        let name = 'a';
-        while (
-        ['a',].includes(name.slice(-1))
-        ||
-        ['ie', 'ah', 'hy', 'ay', 'ee'].includes(name.slice(-2))
-            ) {
-            name = faker.name.firstName(GENDER_MALE);
-        }
         return {
-            name,
-            surname: faker.name.lastName(GENDER_MALE),
+            name: faker.name(locale),
+            surname: faker.surname(locale),
             contract: randomizer.int(1, 5)
         }
     },
