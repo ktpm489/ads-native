@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
-import TeamCard from './cards/TeamCard';
-import {selectTeamDetails} from '../../store/actions';
+import TeamCard from './TeamCard';
+import {selectTeamDetails} from '../../../store/actions/index';
 
 
 class TeamCardView extends Component {

@@ -1,16 +1,69 @@
 import React, {Component} from 'react';
-import {Container, Content} from 'native-base';
+import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 import {connect} from 'react-redux';
+import {Flag, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
 
-import {HeaderSpacer} from '../common';
+import {formatCurrency} from '../../utils';
+
+const {tableHeaderTextStyle, tableRowStyle} = commonStyles;
 
 class CoachDetailsView extends Component {
     render() {
+        const {coach} = this.props.navigation;
         return (
             <Container>
                 <HeaderSpacer/>
                 <Content>
-                    <Text>Coach Details</Text>
+                    <Card>
+                        <CardItem header>
+                            <Flag nationality={coach.nationality}/>
+                            <H3 style={{marginLeft: 5}}>{`${coach.name} ${coach.surname}`}</H3>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Morale</Text>
+                                </Col>
+                                <Col>
+                                    <IndicatorBar value={coach.status.morale}/>
+                                </Col>
+                            </Row>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Age</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{coach.age}</Text>
+                                </Col>
+                            </Row>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Position</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{coach.module}</Text>
+                                </Col>
+                            </Row>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Skill</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{`${coach.skill}`}</Text>
+                                </Col>
+                            </Row>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text style={tableHeaderTextStyle}>Contract</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{`${formatCurrency(coach.wage)} (${coach.contract} years left)`}</Text>
+                                </Col>
+                            </Row>
+                            </Body>
+                        </CardItem>
+                    </Card>
                 </Content>
             </Container>
         );
@@ -18,9 +71,9 @@ class CoachDetailsView extends Component {
 }
 
 
-const mapStateToProps = ({routes}) => {
+const mapStateToProps = ({navigation}) => {
     return {
-        routes
+        navigation
     }
 };
 

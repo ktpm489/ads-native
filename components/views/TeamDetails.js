@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
 import TeamCard from '../team/cards/TeamCard';
-import CoachCard from '../team/cards/CoachCard';
+import ClickableCoachCard from '../team/cards/ClickableCoachCard';
 import PlayersTableRow from '../team/tables/PlayersTableRow';
 import PlayersTableHeader from '../team/tables/PlayersTableHeader';
 
@@ -25,7 +25,7 @@ class TeamDetailsView extends Component {
                 <HeaderSpacer/>
                 <Content>
                     <TeamCard team={team}/>
-                    <CoachCard coach={coach}/>
+                    <ClickableCoachCard coach={coach}/>
                     <Card>
                         <CardItem header>
                             <H3>Roster</H3>
