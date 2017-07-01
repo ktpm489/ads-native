@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Switch, Scene, Router} from 'react-native-router-flux';
-import {Loading, NewPlayerForm, NewGame, CoachDetails, PlayerDetails, TeamDetails} from './components/views';
+import {
+    Loading,
+    NewPlayerForm,
+    MainDash,
+    CoachDetails,
+    PlayerDetails,
+    TeamDetails,
+    TeamsList
+} from './components/views';
+import * as routes from './const/routes';
 import {store} from './store';
 import {fetchUser} from './store/actions';
 
@@ -11,7 +20,7 @@ class App extends Component {
     }
 
     sceneSelector() {
-        return store.getState().user ? 'newGame' : 'newPlayer';
+        return store.getState().user ? routes.MAIN_DASH : routes.NEW_PLAYER;
     }
 
     render() {
@@ -25,13 +34,14 @@ class App extends Component {
                         unmountScenes
                         selector={this.sceneSelector.bind(this)}
                     >
-                        <Scene key="loading" component={Loading} initial hideNavBar/>
-                        <Scene key="newPlayer" component={NewPlayerForm} title="New Player"/>
-                        <Scene key="newGame" component={NewGame} title="Dashboard"/>
+                        <Scene key={routes.LOADING} component={Loading} initial hideNavBar/>
+                        <Scene key={routes.NEW_PLAYER} component={NewPlayerForm} title="New Player"/>
+                        <Scene key={routes.MAIN_DASH} component={MainDash} title="Dashboard"/>
                     </Scene>
-                    <Scene key="teamDetails" component={TeamDetails} title="Team Details"/>
-                    <Scene key="coachDetails" component={CoachDetails} title="Coach Details"/>
-                    <Scene key="playerDetails" component={PlayerDetails} title="Player Details"/>
+                    <Scene key={routes.TEAMS_LIST} component={TeamsList} title="Teams"/>
+                    <Scene key={routes.TEAM_DETAILS} component={TeamDetails} title="Team Details"/>
+                    <Scene key={routes.COACH_DETAILS} component={CoachDetails} title="Coach Details"/>
+                    <Scene key={routes.PLAYER_DETAILS} component={PlayerDetails} title="Player Details"/>
                 </Router>
             </Provider>
         );

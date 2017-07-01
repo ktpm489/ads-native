@@ -4,13 +4,14 @@ import {TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
 import CoachCard from './CoachCard';
-import {selectCoachDetails} from '../../../store/actions/index';
+import {COACH_DETAILS} from '../../../const/routes';
+import {selectCoachDetails} from '../../../store/actions';
 
 
 class ClickableCoachCardView extends Component {
     showCoachDetails() {
         this.props.select(this.props.coach);
-        Actions.coachDetails();
+        Actions[COACH_DETAILS]();
     }
 
     render() {

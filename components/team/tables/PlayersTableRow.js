@@ -4,6 +4,7 @@ import {TouchableOpacity, View} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {Text} from 'native-base';
 
+import {PLAYER_DETAILS} from '../../../const/routes';
 import {Flag, Tr} from '../../common';
 import {selectPlayerDetails} from '../../../store/actions';
 
@@ -11,7 +12,7 @@ import {selectPlayerDetails} from '../../../store/actions';
 class PlayersTableRowView extends Component {
     showPlayerDetails() {
         this.props.select(this.props.player);
-        Actions.playerDetails();
+        Actions[PLAYER_DETAILS]();
     }
 
     render() {

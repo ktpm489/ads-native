@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Content, Text, H2, H3, Card, CardItem} from 'native-base';
+import {Container, Content, H2, H3, Card, CardItem} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderSpacer} from '../common';
 
