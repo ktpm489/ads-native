@@ -1,4 +1,5 @@
 const colors = {
+    lightGray: '#efeff2',
     softBorderColor: '#d7d7d7',
 };
 
