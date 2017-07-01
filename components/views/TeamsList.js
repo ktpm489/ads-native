@@ -7,7 +7,7 @@ import TeamsTableRow from '../team/tables/TeamsTableRow';
 
 import {wipeDb} from '../../db/realm';
 
-class NewGameView extends Component {
+class TeamsListView extends Component {
     wipeAll() {
         wipeDb();
     }
@@ -54,5 +54,5 @@ const mapDispatchToProps = () => {
     return {};
 };
 
-const NewGame = connect(mapStateToProps, mapDispatchToProps)(NewGameView);
-export {NewGame}
+const TeamsList = connect(mapStateToProps, mapDispatchToProps)(TeamsListView);
+export {TeamsList}
