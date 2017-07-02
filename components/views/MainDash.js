@@ -19,7 +19,7 @@ import {Actions} from 'react-native-router-flux';
 
 import {colors} from '../common';
 
-import {TEAMS_LIST} from '../../const/routes';
+import {SETTINGS, TEAMS_LIST} from '../../const/routes';
 
 class MainDashView extends Component {
     render() {
@@ -92,7 +92,7 @@ class MainDashView extends Component {
                                 <Col/>
                                 <Col/>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[SETTINGS]()}>
                                         <Icon name="settings" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Settings</Text>
                                     </TouchableOpacity>

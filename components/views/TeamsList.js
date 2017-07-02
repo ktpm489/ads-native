@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Header, Card, Title, Container, Content, Text, Button} from 'native-base';
+import {Header, Card, Title, Container, Content, Text} from 'native-base';
 import {HeaderSpacer, B} from '../common';
 import TeamsTableHeader from '../team/tables/TeamsTableHeader';
 import TeamsTableRow from '../team/tables/TeamsTableRow';
 
-import {wipeDb} from '../../db/realm';
 
 class TeamsListView extends Component {
-    wipeAll() {
-        wipeDb();
-    }
 
     _renderTeams() {
         let {teams} = this.props;
@@ -27,9 +23,6 @@ class TeamsListView extends Component {
             <Container>
                 <HeaderSpacer />
                 <Content>
-                    <Button onPress={this.wipeAll.bind(this)}>
-                        <Text>Wipe</Text>
-                    </Button>
                     <Card>
                         <Text>Ehy there Mr. <B>{`${user.surname}`}</B>, those are the teams that will compete in the
                             next

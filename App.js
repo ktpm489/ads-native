@@ -5,6 +5,7 @@ import {
     Loading,
     NewPlayerForm,
     MainDash,
+    Settings,
     CoachDetails,
     PlayerDetails,
     TeamDetails,
@@ -38,6 +39,7 @@ class App extends Component {
                         <Scene key={routes.NEW_PLAYER} component={NewPlayerForm} title="New Player"/>
                         <Scene key={routes.MAIN_DASH} component={MainDash} title="Dashboard"/>
                     </Scene>
+                    <Scene key={routes.SETTINGS} component={Settings} title="Settings"/>
                     <Scene key={routes.TEAMS_LIST} component={TeamsList} title="Teams"/>
                     <Scene key={routes.TEAM_DETAILS} component={TeamDetails} title="Team Details"/>
                     <Scene key={routes.COACH_DETAILS} component={CoachDetails} title="Coach Details"/>
