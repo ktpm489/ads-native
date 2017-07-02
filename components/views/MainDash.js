@@ -164,6 +164,7 @@ const styles = {
         fontSize: 70
     },
     bottomBar: {
+        backgroundColor: colors.lightGray,
         borderTopWidth: 1,
         borderColor: colors.softBorderColor,
         padding: 8,

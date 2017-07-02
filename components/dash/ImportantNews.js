@@ -10,7 +10,7 @@ class ImportantNews extends Component {
     render() {
         const {news} = this.props;
         return (
-            <Card>
+            <Card style={{marginBottom: 80}}>
                 <CardItem header>
                     <H3>Important News</H3>
                 </CardItem>
