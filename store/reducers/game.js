@@ -1,7 +1,7 @@
 import moment from 'moment';
 import {NEW_GAME_STARTED} from '../actions';
 const initialState = {
-    date: `01-07-${moment().format('YYYY')}`,
+    date: `10-06-${moment().format('YYYY')}`,
     events: [],
     importantMessages: [],
     notifications: []

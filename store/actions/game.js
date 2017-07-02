@@ -8,7 +8,7 @@ export const newGame = user => {
         data: {
             importantMessages: [
                 {
-                    body: `Ehy there Mr. ${user.name} ${user.surname}, welcome to ${GAME_NAME}`
+                    body: `Ehy Mr. ${user.surname}, welcome to ${GAME_NAME}`
                 }
             ]
         }
