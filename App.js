@@ -50,7 +50,7 @@ class App extends Component {
                     <Scene key={routes.NEWS} component={News} title="News"/>
                     <Scene key={routes.TEAM} component={Team} title="Team"/>
                     <Scene key={routes.CLUB} component={Club} title="Club"/>
-                    <Scene key={routes.STATS} component={Settings} title="Stats"/>
+                    <Scene key={routes.STATS} component={Stats} title="Stats"/>
                     <Scene key={routes.SETTINGS} component={Settings} title="Settings"/>
                     <Scene key={routes.TEAMS_LIST} component={TeamsList} title="Teams"/>
                     <Scene key={routes.TEAM_DETAILS} component={TeamDetails} title="Team Details"/>
