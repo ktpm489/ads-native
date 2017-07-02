@@ -19,7 +19,7 @@ import {Actions} from 'react-native-router-flux';
 
 import {colors} from '../common';
 
-import {SETTINGS, TEAMS_LIST} from '../../const/routes';
+import {SETTINGS, MAIL, CALENDAR, NEWS, TEAM, CLUB, STATS, TEAMS_LIST} from '../../const/routes';
 
 class MainDashView extends Component {
     render() {
@@ -48,19 +48,19 @@ class MainDashView extends Component {
 
                             <Row>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[MAIL]()}>
                                         <Icon name="mail" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Mail</Text>
                                     </TouchableOpacity>
                                 </Col>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[CALENDAR]()}>
                                         <Icon name="calendar" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Calendar</Text>
                                     </TouchableOpacity>
                                 </Col>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[NEWS]()}>
                                         <Icon name="paper" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>News</Text>
                                     </TouchableOpacity>
@@ -69,19 +69,19 @@ class MainDashView extends Component {
 
                             <Row style={internalRowStyle}>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAM]()}>
                                         <Icon name="people" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Team</Text>
                                     </TouchableOpacity>
                                 </Col>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[CLUB]()}>
                                         <Icon name="clipboard" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Club</Text>
                                     </TouchableOpacity>
                                 </Col>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[STATS]()}>
                                         <Icon name="stats" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>Stats</Text>
                                     </TouchableOpacity>
@@ -89,7 +89,12 @@ class MainDashView extends Component {
                             </Row>
 
                             <Row style={internalRowStyle}>
-                                <Col/>
+                                <Col>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[SETTINGS]()}>
+                                        <Icon name="globe" style={appIconStyle}/>
+                                        <Text style={appLabelStyle}>World Db</Text>
+                                    </TouchableOpacity>
+                                </Col>
                                 <Col/>
                                 <Col>
                                     <TouchableOpacity style={appButtonStyle} onPress={() => Actions[SETTINGS]()}>
