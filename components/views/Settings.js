@@ -15,7 +15,6 @@ import {
     Col,
     Icon
 } from 'native-base';
-import {Actions} from 'react-native-router-flux';
 import {HeaderSpacer, colors} from '../common';
 
 import {wipeDb} from '../../db/realm'
@@ -28,13 +27,11 @@ class SettingsView extends Component {
 
     render() {
         const {
-            headerStyle,
             containerStyle,
             cardStyle,
             appButtonStyle,
             appIconStyle,
-            appLabelStyle,
-            internalRowStyle
+            appLabelStyle
         } = styles;
         return (
             <Container>
@@ -46,7 +43,7 @@ class SettingsView extends Component {
                                 <Col>
                                     <TouchableOpacity style={appButtonStyle} onPress={() => this.wipeAll()}>
                                         <Icon name="trash" style={appIconStyle}/>
-                                        <Text style={appLabelStyle}>Delete Data</Text>
+                                        <Text style={appLabelStyle}>Wipe</Text>
                                     </TouchableOpacity>
                                 </Col>
                                 <Col />

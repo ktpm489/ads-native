@@ -16,7 +16,8 @@ import {
     H3,
     Row,
     Col,
-    Button
+    Button,
+    Icon
 } from 'native-base';
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
@@ -134,6 +135,7 @@ class NewPlayerFormView extends Component {
                                 <Col>
                                     <Button disabled={!this.isReadyToSave()} onPress={this.saveUser.bind(this)}>
                                         <Text>Start</Text>
+                                        <Icon name="skip-forward" style={{fontSize: 15}}/>
                                     </Button>
                                 </Col>
                             </Row>

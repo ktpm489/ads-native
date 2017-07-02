@@ -24,9 +24,6 @@ class TeamsListView extends Component {
                 <HeaderSpacer />
                 <Content>
                     <Card>
-                        <Text>Ehy there Mr. <B>{`${user.surname}`}</B>, those are the teams that will compete in the
-                            next
-                            championship.</Text>
                         <TeamsTableHeader/>
                         {this._renderTeams()}
                     </Card>

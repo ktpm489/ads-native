@@ -3,11 +3,13 @@ import {TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {
     Header,
+    H3,
     Button,
     Title,
     Left,
     Body,
     Card,
+    CardItem,
     Text,
     Container,
     Content,
@@ -18,20 +20,28 @@ import {
 import {Actions} from 'react-native-router-flux';
 
 import {colors} from '../common';
+import {ImportantNews, Date} from '../dash';
 
 import {SETTINGS, MAIL, CALENDAR, NEWS, TEAM, CLUB, STATS, TEAMS_LIST} from '../../const/routes';
 
 class MainDashView extends Component {
+    advanceTime() {
+
+    }
+
     render() {
         const {
             headerStyle,
             containerStyle,
             cardStyle,
             appButtonStyle,
+            actionButtonStyle,
             appIconStyle,
             appLabelStyle,
-            internalRowStyle
+            internalRowStyle,
+            bottomBar
         } = styles;
+        const {game} = this.props;
         return (
             <Container>
                 <Header style={headerStyle} androidStatusBarColor={colors.lightGray}>
@@ -90,7 +100,7 @@ class MainDashView extends Component {
 
                             <Row style={internalRowStyle}>
                                 <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[SETTINGS]()}>
+                                    <TouchableOpacity style={appButtonStyle} onPress={() => Actions[TEAMS_LIST]()}>
                                         <Icon name="globe" style={appIconStyle}/>
                                         <Text style={appLabelStyle}>World Db</Text>
                                     </TouchableOpacity>
@@ -106,7 +116,20 @@ class MainDashView extends Component {
 
                         </Col>
                     </Card>
+                    <ImportantNews news={game.importantMessages}/>
                 </Content>
+                <Row style={bottomBar}>
+                    <Col>
+                        <Date date={game.date}/>
+                    </Col>
+                    <Col/>
+                    <Col>
+                        <Button style={actionButtonStyle} onPress={() => this.advanceTime()}>
+                            <Text>Continue</Text>
+                            <Icon name="skip-forward" style={{fontSize: 15}}/>
+                        </Button>
+                    </Col>
+                </Row>
             </Container>
         );
     }
@@ -120,25 +143,39 @@ const styles = {
         padding: 5
     },
     cardStyle: {
+        marginBottom: 20,
         padding: 5
     },
     internalRowStyle: {
-        marginTop: 75
+        marginTop: 40
     },
     appButtonStyle: {
         alignSelf: 'center'
+    },
+    actionButtonStyle: {
+        alignSelf: 'flex-end',
+        marginRight: 10,
+        marginBottom: 5
     },
     appLabelStyle: {
         alignSelf: 'center'
     },
     appIconStyle: {
         fontSize: 70
+    },
+    bottomBar: {
+        borderTopWidth: 1,
+        borderColor: colors.softBorderColor,
+        padding: 8,
+        position: 'absolute',
+        bottom: 0,
     }
 };
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, game}) => {
     return {
-        user
+        user,
+        game
     };
 };
 

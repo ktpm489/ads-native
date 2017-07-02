@@ -6,6 +6,7 @@ export const SAVE_USER_FAILURE = 'save_user_failure';
 import {User, Team} from '../../db';
 import {generateMainTeams} from './generators';
 import {setTeams} from './teams';
+import {newGame} from './game';
 
 export const fetchUser = () => {
     return dispatch => {
@@ -24,6 +25,7 @@ export const saveUser = user => {
     return dispatch => {
         if (User.save(user)) {
             dispatch(saveSuccess(user));
+            dispatch(newGame(user));
             dispatch(generateMainTeams())
         } else {
             return dispatch(saveFailure());
