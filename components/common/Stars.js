@@ -12,10 +12,10 @@ const Stars = ({percentage, style}) => {
         ...starIconStyle,
         ...style
     };
-    let icon = 'md-star-outline';
     let fullStars = Math.floor(percentage / 20);
     let partlyStar = (percentage / 20) - Math.floor(percentage / 20);
     const stars = range(STAR_TOTAL).map((_, index) => {
+        let icon = 'md-star-outline';
         if (fullStars > 0) {
             fullStars--;
             icon = 'md-star';
@@ -34,7 +34,7 @@ const styles = {
         flexDirection: 'row'
     },
     starIconStyle: {
-        fontSize: 15
+        fontSize: 18
     }
 };
 

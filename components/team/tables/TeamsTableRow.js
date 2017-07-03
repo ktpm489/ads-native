@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {Text} from 'native-base';
-import {Flag, Tr} from '../../common';
+import {Flag, Tr, Stars} from '../../common';
 import {selectTeamDetails} from '../../../store/actions'
 
 import {teamHelper} from '../../../libs';
@@ -18,24 +18,16 @@ class TeamsTableRowView extends Component {
         const {team} = this.props;
         const columns = [
             {
-                size: 5,
-                value: <Text/>
+                size: 15,
+                value: <Flag nationality={team.nationality}/>
             },
             {
                 size: 40,
                 value: <Text>{team.name}</Text>
             },
             {
-                size: 10,
-                value: <Flag nationality={team.nationality}/>
-            },
-            {
-                size: 10,
-                value: <Text>{teamHelper.averageSkill(team)}</Text>
-            },
-            {
-                size: 15,
-                value: <Text>{teamHelper.averageAge(team)}</Text>
+                size: 30,
+                value: <Stars percentage={teamHelper.averageSkill(team)}/>
             },
             {
                 size: 15,
