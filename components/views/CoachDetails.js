@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 import {connect} from 'react-redux';
-import {Flag, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
+import {Flag, Stars, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
 
 import {formatCurrency} from '../../utils';
 
@@ -50,7 +50,7 @@ class CoachDetailsView extends Component {
                                     <Text style={tableHeaderTextStyle}>Skill</Text>
                                 </Col>
                                 <Col>
-                                    <Text>{`${coach.skill}`}</Text>
+                                    <Stars style={{fontSize: 20}} percentage={coach.skill}/>
                                 </Col>
                             </Row>
                             <Row style={tableRowStyle}>

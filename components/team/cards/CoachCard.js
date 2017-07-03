@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 
-import {Flag, commonStyles} from '../../common';
+import {Flag, Stars, commonStyles} from '../../common';
 
 const {tableHeaderTextStyle} = commonStyles;
 
@@ -28,7 +28,7 @@ const CoachCard = ({coach}) => (
             </Row>
             <Row>
                 <Col>
-                    <Text>{`${coach.skill}`}</Text>
+                    <Stars percentage={coach.skill}/>
                 </Col>
                 <Col>
                     <Text>{`${coach.module}`}</Text>

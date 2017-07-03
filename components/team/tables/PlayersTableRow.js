@@ -5,7 +5,7 @@ import {Actions} from 'react-native-router-flux';
 import {Text} from 'native-base';
 
 import {PLAYER_DETAILS} from '../../../const/routes';
-import {Flag, Tr} from '../../common';
+import {Flag, Stars, Tr} from '../../common';
 import {selectPlayerDetails} from '../../../store/actions';
 
 
@@ -23,21 +23,25 @@ class PlayersTableRowView extends Component {
                 value: <Text>{` `}</Text>
             },
             {
-                size: 50,
+                size: 45,
                 value: (
                     <View>
-                        <Text>{`${player.name} ${player.surname} (${player.age})`}</Text>
+                        <Text>{`${player.name} ${player.surname}`}</Text>
                         <Flag nationality={player.nationality}/>
                     </View>
                 ),
             },
             {
-                size: 25,
+                size: 10,
+                value: <Text>{`${player.age}`}</Text>,
+            },
+            {
+                size: 20,
                 value: <Text>{`${player.position}`}</Text>,
             },
             {
                 size: 20,
-                value: <Text>{`${player.skill}`}</Text>,
+                value: <Stars percentage={player.skill}/>,
             }
         ];
         return (
