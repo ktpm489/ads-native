@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 
-import {Flag, commonStyles} from '../../common';
+import {Flag, Stars, commonStyles} from '../../common';
 import {teamHelper} from '../../../libs';
 
 const {tableHeaderTextStyle} = commonStyles;
@@ -27,7 +27,7 @@ const TeamCard = ({team}) => (
             </Row>
             <Row>
                 <Col>
-                    <Text>{teamHelper.averageSkill(team)}</Text>
+                    <Stars percentage={teamHelper.averageSkill(team)}/>
                 </Col>
                 <Col>
                     <Text>{teamHelper.averageAge(team)}</Text>
