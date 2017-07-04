@@ -59,6 +59,7 @@ const generator = {
         return {
             name: faker.name(locale),
             surname: faker.surname(locale),
+            team: null,
             contract: randomizer.int(1, 5)
         }
     },
@@ -110,17 +111,17 @@ const generator = {
         const nationality = forcedValues.nationality || 'it';
         const roster = this.players(mostPlayers, {nationality});
         roster.push(this.player({position: 'GK', nationality}));
+        const name = this.teamName(nationality);
         range(rosterSize - mostPlayers).forEach(_ => {
-            roster.push(this.player({nationality: this.nationality()}));
+            roster.push(this.player({nationality: this.nationality(), team: name}));
         });
-
         const coachNationality = randomizer.chance(90) ? nationality : this.nationality();
         return {
-            name: this.teamName(nationality),
+            name,
             status: this.status(),
             nationality,
             finance: randomizer.int(1, 100),
-            coach: this.coach({nationality: coachNationality}),
+            coach: this.coach({nationality: coachNationality, team: name}),
             roster
         }
     },
