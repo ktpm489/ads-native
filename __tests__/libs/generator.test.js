@@ -118,6 +118,10 @@ describe('team generator', () => {
             coach: expect.anything(),
             roster: expect.anything()
         });
+
+        team.roster.forEach(p=>{
+            expect(p.team).toBe(team.name);
+        })
     });
 });
 

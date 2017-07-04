@@ -5,7 +5,7 @@ Player.schema = {
     properties: {
         name: 'string',
         surname: 'string',
-        morale: {type: 'string', default: null},
+        team: {type: 'string', optional: true},
         contract: 'int',
         age: 'int',
         nationality: 'string',

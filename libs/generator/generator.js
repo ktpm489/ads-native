@@ -106,12 +106,12 @@ const generator = {
     },
     team(forcedValues = {}){
         const rosterSize = randomizer.int(18, 29);
+        const name = this.teamName(nationality);
         const mostPlayers = Math.round(rosterSize * (1 - 0.8));
 
         const nationality = forcedValues.nationality || 'it';
-        const roster = this.players(mostPlayers, {nationality});
-        roster.push(this.player({position: 'GK', nationality}));
-        const name = this.teamName(nationality);
+        const roster = this.players(mostPlayers, {nationality, team: name});
+        roster.push(this.player({position: 'GK', nationality, team: name}));
         range(rosterSize - mostPlayers).forEach(_ => {
             roster.push(this.player({nationality: this.nationality(), team: name}));
         });

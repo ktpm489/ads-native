@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
 import {connect} from 'react-redux';
+import moment from 'moment';
+
 import {Flag, Stars, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
 
 import {formatCurrency} from '../../utils';
@@ -68,6 +70,24 @@ class PlayerDetailsView extends Component {
                                 </Col>
                                 <Col>
                                     <Text>{`${formatCurrency(player.value)}`}</Text>
+                                </Col>
+                            </Row>
+                            </Body>
+                        </CardItem>
+                    </Card>
+
+                    <Card>
+                        <CardItem header>
+                            <Text>History</Text>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text>{`${moment().format('YYYY')} - `}</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{player.team}</Text>
                                 </Col>
                             </Row>
                             </Body>
