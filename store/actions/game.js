@@ -1,6 +1,7 @@
 import {GAME_NAME} from '../../config';
 
 export const NEW_GAME_STARTED = 'new_game_started';
+export const DAY_ADVANCED = 'day_advanced';
 
 export const newGame = user => {
     return {
@@ -13,4 +14,17 @@ export const newGame = user => {
             ]
         }
     }
+};
+
+export const advanceTime = (status) => {
+    const date = status.date.add(1, 'day');
+    return {
+        type: DAY_ADVANCED,
+        data: {
+            status: {
+                ...status,
+                date
+            }
+        }
+    };
 };

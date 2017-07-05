@@ -22,11 +22,14 @@ import {Actions} from 'react-native-router-flux';
 import {colors} from '../common';
 import {ImportantNews, Date} from '../dash';
 
+import {DATE_FORMAT} from '../../const';
 import {SETTINGS, MAIL, CALENDAR, NEWS, TEAM, CLUB, STATS, TEAMS_LIST} from '../../const/routes';
+
+import {advanceTime} from '../../store/actions';
 
 class MainDashView extends Component {
     advanceTime() {
-
+        this.props.advanceTime(this.props.game.status);
     }
 
     render() {
@@ -41,7 +44,7 @@ class MainDashView extends Component {
             internalRowStyle,
             bottomBar
         } = styles;
-        const {game} = this.props;
+        const {importantMessages, status} = this.props.game;
         return (
             <Container>
                 <Header style={headerStyle} androidStatusBarColor={colors.lightGray}>
@@ -116,11 +119,11 @@ class MainDashView extends Component {
 
                         </Col>
                     </Card>
-                    <ImportantNews news={game.importantMessages}/>
+                    <ImportantNews news={importantMessages}/>
                 </Content>
                 <Row style={bottomBar}>
                     <Col>
-                        <Date date={game.date}/>
+                        <Date date={status.date.format(DATE_FORMAT)}/>
                     </Col>
                     <Col/>
                     <Col>
@@ -180,8 +183,12 @@ const mapStateToProps = ({user, game}) => {
     };
 };
 
-const mapDispatchToProps = () => {
-    return {};
+const mapDispatchToProps = dispatch => {
+    return {
+        advanceTime(status) {
+            dispatch(advanceTime(status));
+        }
+    };
 };
 
 const MainDash = connect(mapStateToProps, mapDispatchToProps)(MainDashView);
