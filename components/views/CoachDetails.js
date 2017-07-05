@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
+import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3, Icon} from 'native-base';
+import moment from 'moment';
 import {connect} from 'react-redux';
 import {Flag, Stars, HeaderSpacer, IndicatorBar, commonStyles} from '../common';
 
@@ -16,8 +17,15 @@ class CoachDetailsView extends Component {
                 <Content>
                     <Card>
                         <CardItem header>
-                            <Flag nationality={coach.nationality}/>
-                            <H3 style={{marginLeft: 5}}>{`${coach.name} ${coach.surname}`}</H3>
+                            <Row>
+                                <Col>
+                                    <Flag nationality={coach.nationality}/>
+                                    <H3 style={{marginLeft: 5}}>{`${coach.name} ${coach.surname}`}</H3>
+                                </Col>
+                                <Col style={{alignItems: 'center'}}>
+                                    <Icon style={{fontSize: 53}} name="ios-person"/>
+                                </Col>
+                            </Row>
                         </CardItem>
                         <CardItem>
                             <Body>
@@ -59,6 +67,24 @@ class CoachDetailsView extends Component {
                                 </Col>
                                 <Col>
                                     <Text>{`${formatCurrency(coach.wage)} (${coach.contract} years left)`}</Text>
+                                </Col>
+                            </Row>
+                            </Body>
+                        </CardItem>
+                    </Card>
+
+                    <Card>
+                        <CardItem header>
+                            <Text>History</Text>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                            <Row style={tableRowStyle}>
+                                <Col>
+                                    <Text>{`${moment().format('YYYY')} - `}</Text>
+                                </Col>
+                                <Col>
+                                    <Text>{coach.team}</Text>
                                 </Col>
                             </Row>
                             </Body>

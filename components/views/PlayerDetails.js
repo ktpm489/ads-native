@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3} from 'native-base';
+import {Container, Content, Card, CardItem, Body, Text, Row, Col, H3, Icon} from 'native-base';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
@@ -19,8 +19,15 @@ class PlayerDetailsView extends Component {
                 <Content>
                     <Card>
                         <CardItem header>
-                            <Flag nationality={player.nationality}/>
-                            <H3 style={{marginLeft: 5}}>{`${player.name} ${player.surname}`}</H3>
+                            <Row>
+                                <Col>
+                                    <Flag nationality={player.nationality}/>
+                                    <H3 style={{marginLeft: 5}}>{`${player.name} ${player.surname}`}</H3>
+                                </Col>
+                                <Col style={{alignItems: 'center'}}>
+                                    <Icon style={{fontSize: 53}} name="ios-person"/>
+                                </Col>
+                            </Row>
                         </CardItem>
                         <CardItem>
                             <Body>
