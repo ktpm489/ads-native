@@ -1,3 +1,4 @@
+import {day} from '../../libs/simulator';
 import {GAME_NAME} from '../../config';
 
 export const NEW_GAME_STARTED = 'new_game_started';
@@ -16,15 +17,21 @@ export const newGame = user => {
     }
 };
 
-export const advanceTime = (status) => {
+export const advanceTime = game => {
+    const {status, actions} = game;
+
+    const {importantMessages, notifications} = day.simulate(status, actions);
     const date = status.date.add(1, 'day');
+
     return {
         type: DAY_ADVANCED,
         data: {
             status: {
                 ...status,
                 date
-            }
+            },
+            importantMessages,
+            notifications
         }
     };
 };

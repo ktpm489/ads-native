@@ -29,7 +29,8 @@ import {advanceTime} from '../../store/actions';
 
 class MainDashView extends Component {
     advanceTime() {
-        this.props.advanceTime(this.props.game.status);
+        const {advanceTime, game} = this.props;
+        advanceTime(game);
     }
 
     render() {
@@ -185,8 +186,8 @@ const mapStateToProps = ({user, game}) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        advanceTime(status) {
-            dispatch(advanceTime(status));
+        advanceTime(game) {
+            dispatch(advanceTime(game));
         }
     };
 };
