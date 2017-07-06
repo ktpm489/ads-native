@@ -1,10 +1,14 @@
 import {randomizer} from '../generator';
-const day = {
-    simulate(status, actions){
-        const importantMessages = [];
 
-        if (randomizer.chance(50)) {
-            importantMessages.push({body: `A day has passed`});
+import {teamHiringRequest} from './events/user/teamHiringRequest';
+
+const day = {
+    simulate(status, actions, teams = null){
+        const importantMessages = [];
+        if (!status.team && teams) {
+            if (randomizer.chance(70)) {
+                teamHiringRequest.event(randomizer.pickOne(teams));
+            }
         }
 
         const notifications = {
