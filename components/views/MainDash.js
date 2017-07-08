@@ -45,7 +45,7 @@ class MainDashView extends Component {
             internalRowStyle,
             bottomBar
         } = styles;
-        const {importantMessages, status} = this.props.game;
+        const {events, status} = this.props.game;
         return (
             <Container>
                 <Header style={headerStyle} androidStatusBarColor={colors.lightGray}>
@@ -120,7 +120,7 @@ class MainDashView extends Component {
 
                         </Col>
                     </Card>
-                    <ImportantNews news={importantMessages}/>
+                    <ImportantNews news={events.importantMessages}/>
                 </Content>
                 <Row style={bottomBar}>
                     <Col>

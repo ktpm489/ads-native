@@ -11,11 +11,12 @@ const initialState = {
         isMarketOpen: true,
         gamesLeft: ((TEAM_NUMBER - 1 ) * 2)
     },
-    events: [],
-    importantMessages: [],
-    notifications: {
-        mails: [],
-        news: []
+    events: {
+        importantMessages: [],
+        notifications: {
+            mails: [],
+            news: []
+        }
     },
     actions: []
 };
