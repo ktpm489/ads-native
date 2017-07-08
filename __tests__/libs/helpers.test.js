@@ -1,4 +1,5 @@
 import {teamHelper, playerHelper, generator, fixtureGenerator, round, leagueHelper} from '../../libs';
+import {byTeamSkillAvgDesc} from '../../libs/misc'
 import {range} from '../../utils';
 
 describe('playerHelper tests', () => {
@@ -298,5 +299,18 @@ describe('leagueHelper tests', () => {
         const results = round.simulate(matches, teams);
         const updatedTeams = leagueHelper.updateStatus(results, teamHelper.teamsToObject(teams));
         expect(updatedTeams.length).toBe(2);
+    });
+});
+
+describe('filters and sorts', () => {
+    test('it filters teams by skill average', () => {
+        const generatedTeams = generator.teams(3);
+        const teams = generatedTeams.sort(byTeamSkillAvgDesc);
+        let previousSkillAvg = 110;
+        teams.forEach(t => {
+            const currentSkillAvg = teamHelper.averageSkill(t);
+            expect(currentSkillAvg).toBeLessThanOrEqual(previousSkillAvg);
+            previousSkillAvg = currentSkillAvg;
+        });
     });
 });
