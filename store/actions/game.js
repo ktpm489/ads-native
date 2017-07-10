@@ -18,20 +18,22 @@ export const newGame = user => {
 };
 
 export const advanceTime = game => {
-    const {status, actions} = game;
+    return (dispatch, getState) => {
+        const {status, actions} = game;
 
-    const {importantMessages, notifications} = day.simulate(status, actions);
-    const date = status.date.add(1, 'day');
+        const {importantMessages, notifications} = day.simulate(status, actions, getState().teams.array);
+        const date = status.date.add(1, 'day');
 
-    return {
-        type: DAY_ADVANCED,
-        data: {
-            status: {
-                ...status,
-                date
-            },
-            importantMessages,
-            notifications
-        }
-    };
+        return {
+            type: DAY_ADVANCED,
+            data: {
+                status: {
+                    ...status,
+                    date
+                },
+                importantMessages,
+                notifications
+            }
+        };
+    }
 };
