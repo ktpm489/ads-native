@@ -1,5 +1,6 @@
 import moment from 'moment';
 import {day} from '../../libs/simulator';
+import {day} from '../../libs/simulator/events';
 import {DATE_FORMAT, TEAM_NUMBER} from '../../const';
 
 describe('day simulator test', () => {
@@ -40,4 +41,13 @@ describe('day simulator test', () => {
         })
     });
 
+    test('if player has no team, there is a chance that one will make an offer', () => {
+        const result = day.simulate(statusMock, actions, events);
+    });
+});
+
+describe('events test', () => {
+    test('events contract offered', () => {
+
+    })
 });
