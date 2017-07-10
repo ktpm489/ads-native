@@ -1,5 +1,3 @@
-import {randomizer} from '../generator';
-
 const day = {
     simulate(status, actions, context){
         const actionsResult = this.applyActions(status, actions, context);
