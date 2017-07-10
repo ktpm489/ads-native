@@ -1,7 +1,6 @@
 import {SET_TEAMS} from '../actions';
 
 const initialState = {
-        playerTeam: {},
         teams: {
             object: {},
             array: {}
