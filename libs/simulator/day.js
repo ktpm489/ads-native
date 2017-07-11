@@ -1,3 +1,23 @@
+const extractEvents = events => {
+    const importantMessages = [];
+    const mails = [];
+    const news = [];
+
+    events.forEach(e => {
+        const messages = e.importantMessages || [];
+        importantMessages.push(...messages);
+        mails.push(...e.mails);
+        news.push(...e.news);
+    });
+    return {
+        importantMessages,
+        notifications: {
+            mails,
+            news
+        }
+    }
+};
+
 const day = {
     simulate(status, actions, context){
         const actionsResult = this.applyActions(status, actions, context);
@@ -8,7 +28,7 @@ const day = {
         const events = extractEvents(eventsArray);
         return {
             status,
-            events
+            ...events
         }
     },
     applyActions(status, actions, context){
@@ -21,25 +41,6 @@ const day = {
         return {
             status,
             events: []
-        }
-    }
-};
-
-const extractEvents = events => {
-    const importantMessages = [];
-    const mails = [];
-    const news = [];
-
-    events.forEach(e => {
-        importantMessages.push(...e.importantMessages);
-        mails.push(...e.mails);
-        news.push(...e.news);
-    });
-    return {
-        importantMessages,
-        notifications: {
-            mails,
-            news
         }
     }
 };

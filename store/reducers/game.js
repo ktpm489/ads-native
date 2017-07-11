@@ -25,6 +25,7 @@ export default function game(state = initialState, action = {}) {
     switch (action.type) {
         case NEW_GAME_STARTED:
         case DAY_ADVANCED:
+            console.log(action.data);
             return {
                 ...initialState,
                 ...action.data,
