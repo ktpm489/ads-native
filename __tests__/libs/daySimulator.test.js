@@ -1,6 +1,5 @@
 import moment from 'moment';
 import {day} from '../../libs/simulator';
-import {day} from '../../libs/simulator/events';
 import {DATE_FORMAT, TEAM_NUMBER} from '../../const';
 
 describe('day simulator test', () => {

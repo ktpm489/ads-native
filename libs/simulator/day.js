@@ -28,7 +28,7 @@ const day = {
         const events = extractEvents(eventsArray);
         return {
             status,
-            ...events
+            events
         }
     },
     applyActions(status, actions, context){
