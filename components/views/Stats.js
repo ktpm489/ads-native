@@ -16,8 +16,13 @@ import {
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
+//import {Table} from '../../db';
+
 
 class StatsView extends Component {
+    componentWillMount(){
+        //console.log(Table.get());
+    }
     stuff() {
 
     }

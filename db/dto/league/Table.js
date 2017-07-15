@@ -1,12 +1,24 @@
-import {getObjects, saveObject} from '../../realm';
+import {getObjects, saveObjects, toJs} from '../../realm';
 
 const Table = {
     schema: 'LeagueTable',
     get(){
-        return getObjects(this.schema);
+        const table = {};
+        toJs(getObjects(this.schema)).forEach(row => {
+            table[row.name] = {
+                ...row
+            }
+        });
+
+        return table;
     },
     save(table){
-        return saveObject(this.schema, table);
+        const tableRows = Object.keys(table).map(team => {
+            return {
+                ...table[team]
+            }
+        });
+        return saveObjects(this.schema, tableRows);
     }
 };
 

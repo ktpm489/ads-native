@@ -1,6 +1,6 @@
 import {User} from './models';
 import {Coach, Player, Status, Team} from './models/team';
-import {Fixture, Match, MatchResult, MatchScorers, Scorer} from './models/league';
+import {Round, Match, MatchResult, MatchScorers, Scorer} from './models/league';
 import {LeagueTable, ScorerTable} from './models/league/tables';
 
 const schemas = [{
@@ -11,7 +11,7 @@ const schemas = [{
         Player,
         Status,
         Team,
-        Fixture,
+        Round,
         Match,
         MatchResult,
         MatchScorers,

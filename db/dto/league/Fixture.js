@@ -1,9 +1,12 @@
-import {realm, toJs, saveObjects, getObjects} from '../../realm';
+import {toJs, getObjects, saveObjects} from '../../realm';
 
 const Fixture = {
-    schema: 'Fixture',
-    getMatches(){
-        return toJs(getObjects(this.schema).pop().matches);
+    schema: 'Round',
+    getRound(){
+        return toJs(getObjects(this.schema));
+    },
+    save(matches){
+        return saveObjects(this.schema, matches);
     }
 };
 

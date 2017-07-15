@@ -2,9 +2,9 @@ class LeagueTable {
 }
 LeagueTable.schema = {
     name: 'LeagueTable',
-    primaryKey: 'team',
+    primaryKey: 'name',
     properties: {
-        team: 'string',
+        name: 'string',
         played: {type: 'int', default: 0},
         won: {type: 'int', default: 0},
         lost: {type: 'int', default: 0},
