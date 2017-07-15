@@ -16,16 +16,39 @@ import {
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
-//import {Fixture} from '../../db';
+import {Fixture} from '../../db';
 
 
 class CalendarView extends Component {
-    componentWillMount() {
-        //console.log(Fixture.getAllRounds());
+    state = {
+        rounds: []
+    };
+
+    componentDidMount() {
+        this.setState({rounds: Fixture.getAllRounds()});
     }
 
     stuff() {
 
+    }
+
+    _renderMatches(matches) {
+        return matches.map((m, index) => (
+            <Row key={index} style={styles.internalRowStyle}>
+                <Text>{`${m.home} - ${m.away}`}</Text>
+            </Row>
+        ));
+    }
+
+    _renderRounds() {
+        return this.state.rounds.map(r => (
+            <Row key={r.index} style={styles.internalRowStyle}>
+                <Text>{r.date}</Text>
+                <Col>
+                    {this._renderMatches(Array.from(r.matches))}
+                </Col>
+            </Row>
+        ));
     }
 
     render() {
@@ -44,17 +67,7 @@ class CalendarView extends Component {
                 <Content style={containerStyle}>
                     <Card style={cardStyle}>
                         <Col>
-                            <Row>
-                                <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => this.stuff()}>
-                                        <Icon name="trash" style={appIconStyle}/>
-                                        <Text style={appLabelStyle}>Stuff</Text>
-                                    </TouchableOpacity>
-                                </Col>
-                                <Col />
-                                <Col />
-                            </Row>
-
+                            {this._renderRounds()}
                         </Col>
                     </Card>
                 </Content>
