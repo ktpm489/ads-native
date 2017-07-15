@@ -1,17 +1,15 @@
-import {fixtureGenerator, teamHelper} from '../../libs';
+import {teamHelper} from '../../libs';
 
 export const SET_TEAMS = 'set_teams';
 
-export const setTeams = (array, object) => {
+export const setTeams = array => {
     return {
         type: SET_TEAMS,
         data: {
             teams: {
                 array,
-                object
-            },
-            table: teamHelper.createCleanTable(array),
-            fixture: fixtureGenerator.generate(array)
+                object: teamHelper.teamsToObject(array)
+            }
         }
     }
 };

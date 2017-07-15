@@ -20,6 +20,7 @@ const extractEvents = events => {
 
 const day = {
     simulate(status, actions, context){
+        console.log(context);
         const actionsResult = this.applyActions(status, actions, context);
         const eventsArray = actionsResult.events;
         status = actionsResult.status;

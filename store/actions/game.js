@@ -8,11 +8,15 @@ export const newGame = user => {
     return {
         type: NEW_GAME_STARTED,
         data: {
-            importantMessages: [
-                {
-                    body: `Ehy Mr. ${user.surname}, welcome to ${GAME_NAME}`
-                }
-            ]
+            events: {
+                mails: [],
+                news: [],
+                importantMessages: [
+                    {
+                        body: `Ehy Mr. ${user.surname}, welcome to ${GAME_NAME}`
+                    }
+                ]
+            }
         }
     }
 };
@@ -20,7 +24,7 @@ export const newGame = user => {
 export const advanceTime = game => {
     return (dispatch, getState) => {
         const {status, actions} = game;
-        const simulationResult = day.simulate(status, actions, getState().teams.array);
+        const simulationResult = day.simulate(status, actions, getState().teams);
         const date = simulationResult.status.date.add(1, 'day');
         const {importantMessages, notifications} = simulationResult;
         dispatch(
