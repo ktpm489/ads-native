@@ -27,7 +27,7 @@ describe('round simulator tests', () => {
     test('simulates a round match by match', () => {
         const teams = generator.teams(4);
         const fixture = fixtureGenerator.generate(teams);
-        const matches = fixture.pop();
+        const matches = fixture.pop().matches;
         const results = round.simulate(matches, teams);
         expect(results.length).toBe(teams.length / 2);
     });

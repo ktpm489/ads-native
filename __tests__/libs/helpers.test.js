@@ -245,7 +245,7 @@ describe('leagueHelper tests', () => {
     test('it calculates correctly the new table and scorers given round results', () => {
         const teams = generator.teams(2);
         const fixture = fixtureGenerator.generate(teams);
-        const matches = fixture.pop();
+        const matches = fixture.pop().matches;
         const results = round.simulate(matches, teams);
         const newTable = leagueHelper.parseRoundResults(results, teamHelper.createCleanTable(teams));
         const scorer1 = leagueHelper.parseScorers(results, {});
@@ -268,7 +268,7 @@ describe('leagueHelper tests', () => {
                 player: expect.anything()
             });
         });
-        const matches2 = fixture.pop();
+        const matches2 = fixture.pop().matches;
         const results2 = round.simulate(matches2, teams);
         const secondRoundTable = leagueHelper.parseRoundResults(results2, newTable);
         Object.keys(secondRoundTable).forEach(k => {
@@ -295,7 +295,7 @@ describe('leagueHelper tests', () => {
     test('it update correctly the new status given the result', () => {
         const teams = generator.teams(2);
         const fixture = fixtureGenerator.generate(teams);
-        const matches = fixture.pop();
+        const matches = fixture.pop().matches;
         const results = round.simulate(matches, teams);
         const updatedTeams = leagueHelper.updateStatus(results, teamHelper.teamsToObject(teams));
         expect(updatedTeams.length).toBe(2);

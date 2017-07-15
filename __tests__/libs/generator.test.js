@@ -1,3 +1,5 @@
+import moment from 'moment';
+import {DATE_FORMAT} from '../../const';
 import {generator} from '../../libs';
 import {fixtureGenerator} from '../../libs/generator/fixtureGenerator';
 
@@ -119,7 +121,7 @@ describe('team generator', () => {
             roster: expect.anything()
         });
 
-        team.roster.forEach(p=>{
+        team.roster.forEach(p => {
             expect(p.team).toBe(team.name);
         })
     });
@@ -135,7 +137,9 @@ describe('fixture generator', () => {
             {name: 'Roma'},
             {name: 'Fiorentina'}
         ];
-        const fixture = fixtureGenerator.generate(teams);
+
+        const startDate = moment(`01-09-${moment().format('YYYY')}`, DATE_FORMAT);
+        const fixture = fixtureGenerator.generate(teams, startDate);
         expect(fixture.length).toBe((teams.length - 1) * 2);
     });
 });
