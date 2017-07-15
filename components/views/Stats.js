@@ -20,9 +20,10 @@ import {HeaderSpacer, colors} from '../common';
 
 
 class StatsView extends Component {
-    componentWillMount(){
+    componentWillMount() {
         //console.log(Table.get());
     }
+
     stuff() {
 
     }

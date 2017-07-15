@@ -16,8 +16,14 @@ import {
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
+//import {Fixture} from '../../db';
+
 
 class CalendarView extends Component {
+    componentWillMount() {
+        //console.log(Fixture.getAllRounds());
+    }
+
     stuff() {
 
     }
