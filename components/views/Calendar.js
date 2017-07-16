@@ -16,6 +16,8 @@ import {
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
+import {Date} from '../calendar';
+
 import {Fixture} from '../../db';
 
 
@@ -32,22 +34,9 @@ class CalendarView extends Component {
 
     }
 
-    _renderMatches(matches) {
-        return matches.map((m, index) => (
-            <Row key={index} style={styles.internalRowStyle}>
-                <Text>{`${m.home} - ${m.away}`}</Text>
-            </Row>
-        ));
-    }
-
     _renderRounds() {
         return this.state.rounds.map(r => (
-            <Row key={r.index} style={styles.internalRowStyle}>
-                <Text>{r.date}</Text>
-                <Col>
-                    {this._renderMatches(Array.from(r.matches))}
-                </Col>
-            </Row>
+            <Date date={r.date} key={r.index} events={r.matches} />
         ));
     }
 
