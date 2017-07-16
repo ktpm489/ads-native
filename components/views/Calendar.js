@@ -12,7 +12,8 @@ import {
     Content,
     Row,
     Col,
-    Icon
+    Icon,
+    H1
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
@@ -30,25 +31,20 @@ class CalendarView extends Component {
         this.setState({rounds: Fixture.getAllRounds()});
     }
 
-    stuff() {
-
-    }
-
     _renderRounds() {
         return this.state.rounds.map(r => (
-            <Date date={r.date} key={r.index} events={r.matches} />
+            <Date
+                key={r.index}
+                date={r.date}
+                events={r.matches}
+            />
         ));
     }
 
     render() {
         const {
-            headerStyle,
             containerStyle,
             cardStyle,
-            appButtonStyle,
-            appIconStyle,
-            appLabelStyle,
-            internalRowStyle
         } = styles;
         return (
             <Container>
@@ -89,9 +85,11 @@ const styles = {
     }
 };
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, game}) => {
+    const {date} = game.status;
     return {
-        user
+        user,
+        date
     };
 };
 

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Card, Row, Text} from 'native-base';
 
 class EventList extends Component {
-
     render() {
         const {events} = this.props;
         return (
