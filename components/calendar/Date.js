@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {Card, CardItem, Text, Body} from 'native-base';
+import moment from 'moment';
+import {TouchableOpacity, View} from 'react-native';
+import {Text} from 'native-base';
+
 import {EventList} from './EventList';
+import {DATE_FORMAT} from '../../const';
+import {colors} from '../common';
+
 class Date extends Component {
     state = {
         collapsed: true
@@ -21,25 +26,42 @@ class Date extends Component {
     }
 
     render() {
+        const {containerStyle, eventListStyle} = styles;
         const {date, events} = this.props;
         const {collapsed} = this.state;
         return (
-            <Card>
+            <View>
                 <TouchableOpacity onPress={() => this.toggleCollapse()}>
-                    <CardItem header>
-                        <Text>{date}</Text>
-                    </CardItem>
-                    <CardItem>
-                        <Body>
-                        { !collapsed &&
-                        <EventList events={events}/>
-                        }
-                        </Body>
-                    </CardItem>
+                    <View style={containerStyle}>
+                        <Text>{moment(date, DATE_FORMAT).format('MMMM Do YYYY')}</Text>
+                    </View>
                 </TouchableOpacity>
-            </Card>
+                <View style={eventListStyle}>
+                    { !collapsed &&
+                    <EventList events={events}/>
+                    }
+                </View>
+            </View>
+
         );
     }
 }
+
+const styles = {
+    containerStyle: {
+        backgroundColor: colors.lightGray,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        padding: 10,
+        marginBottom: 5,
+    },
+    eventListStyle: {
+        flex: 1,
+        marginBottom: 5,
+    }
+};
+
 
 export {Date};
