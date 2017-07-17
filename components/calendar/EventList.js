@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Card, Row, Text} from 'native-base';
 
+import {MatchRecap} from '../league/match';
 import {commonStyles} from '../common';
 
 class EventList extends Component {
     _renderEvent(event) {
         if (isMatch(event)) {
-            return <Text>{`${event.home} - ${event.away}`}</Text>;
+            return <MatchRecap match={event}/>
         }
 
         return <Text>{`${event.body}`}</Text>
