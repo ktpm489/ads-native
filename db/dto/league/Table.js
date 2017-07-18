@@ -1,10 +1,13 @@
-import {getObjects, saveObjects, toJs} from '../../realm';
+import {realm, getObjects, saveObjects, toJs} from '../../realm';
 
 const Table = {
     schema: 'LeagueTable',
-    get(){
+    getRows(){
+        return Array.from(realm.objects(this.schema).sorted('points'));
+    },
+    getObject(){
         const table = {};
-        toJs(getObjects(this.schema)).forEach(row => {
+        this.getRows().forEach(row => {
             table[row.name] = {
                 ...row
             }

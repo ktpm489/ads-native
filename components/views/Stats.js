@@ -16,12 +16,18 @@ import {
 } from 'native-base';
 import {HeaderSpacer, colors} from '../common';
 
-//import {Table} from '../../db';
+import {TeamsTableHeader, TeamsTableRow} from '../league/table';
+
+import {Table} from '../../db';
 
 
 class StatsView extends Component {
-    componentWillMount() {
-        //console.log(Table.get());
+    state = {
+        table: []
+    };
+
+    componentDidMount() {
+        this.setState({table: Table.getRows()});
     }
 
     stuff() {
@@ -30,32 +36,27 @@ class StatsView extends Component {
 
     render() {
         const {
-            headerStyle,
             containerStyle,
             cardStyle,
             appButtonStyle,
             appIconStyle,
             appLabelStyle,
-            internalRowStyle
         } = styles;
         return (
             <Container>
                 <HeaderSpacer/>
                 <Content style={containerStyle}>
                     <Card style={cardStyle}>
-                        <Col>
-                            <Row>
-                                <Col>
-                                    <TouchableOpacity style={appButtonStyle} onPress={() => this.stuff()}>
-                                        <Icon name="trash" style={appIconStyle}/>
-                                        <Text style={appLabelStyle}>Stuff</Text>
-                                    </TouchableOpacity>
-                                </Col>
-                                <Col />
-                                <Col />
-                            </Row>
-
-                        </Col>
+                        <TeamsTableHeader/>
+                        {
+                            this.state.table.map((team, index) => (
+                                <TeamsTableRow
+                                    key={index}
+                                    index={index + 1}
+                                    team={team}
+                                />
+                            ))
+                        }
                     </Card>
                 </Content>
             </Container>
