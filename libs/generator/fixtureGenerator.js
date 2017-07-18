@@ -21,12 +21,12 @@ const fixtureGenerator = {
             }
             firstHalf.push({
                 index: round,
-                date: moment(startDate).add(round, 'week').format(DATE_FORMAT),
+                date: moment(startDate).add(round, 'week').toDate(),
                 matches: tempRoundFirstHalf
             });
             secondHalf.push({
                 index: round + totalRounds,
-                date: moment(startDate).add(round + totalRounds, 'week').format(DATE_FORMAT),
+                date: moment(startDate).add(round + totalRounds, 'week').toDate(),
                 matches: tempRoundSecondHalf
             });
         }

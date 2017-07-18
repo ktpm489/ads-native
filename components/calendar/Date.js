@@ -4,7 +4,6 @@ import {TouchableOpacity, View} from 'react-native';
 import {Text} from 'native-base';
 
 import {EventList} from './EventList';
-import {DATE_FORMAT} from '../../const';
 import {colors} from '../common';
 
 class Date extends Component {
@@ -33,7 +32,7 @@ class Date extends Component {
             <View>
                 <TouchableOpacity onPress={() => this.toggleCollapse()}>
                     <View style={containerStyle}>
-                        <Text>{moment(date, DATE_FORMAT).format('MMMM Do YYYY')}</Text>
+                        <Text>{moment(date).format('MMMM Do YYYY')}</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={eventListStyle}>
